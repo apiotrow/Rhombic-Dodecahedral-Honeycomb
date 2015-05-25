@@ -2,13 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public static class Coords {
-
+public static class Globals {
 	public static HashSet<Vector3> hiddenTriangleTester = new HashSet<Vector3>();
 	public static Dictionary<Vector3, int[]> hiddenTriangles = new Dictionary<Vector3, int[]>();
-	public static List<int[]> triList = new List<int[]>();
-
-	public static List<Vector3[]> trianglesInTerrain = new List<Vector3[]>();
 
 	public static int[] tris = new int[] {
 		//TOP
@@ -92,6 +88,28 @@ public static class Coords {
 
 	public static Vector3 vec(float a, float b, float c){
 		return (new Vector3(a, b, c));
+	}
+
+	/*
+	 * Returns the average of 3 vertices of a triangle.
+	 */
+	public static Vector3 getTriangleAverage(Vector3 pos, int p){
+		//get the coordinates that correspond the the triangle indices
+		Vector3[] tri = new Vector3[3]{
+			RDverts[tris[p]],
+			RDverts[tris[++p]], 
+			RDverts[tris[++p]]
+		};
+		
+		//add positional offset to base vertices to get actual vertices
+		tri[0] += pos;
+		tri[1] += pos;
+		tri[2] += pos;
+
+		//average the 3 vertices to derive a positional signature for this triangle
+		Vector3 faceAvg = (tri[0] + tri[1] + tri[2]) / 3f;
+
+		return faceAvg;
 	}
 
 }

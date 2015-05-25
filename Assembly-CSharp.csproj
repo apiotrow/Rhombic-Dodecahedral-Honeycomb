@@ -46,11 +46,10 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Coords.cs" />
-     <Compile Include="Assets\Scripts\MeshMaker.cs" />
-     <Compile Include="Assets\Scripts\Old\RD.cs" />
+     <Compile Include="Assets\Scripts\Globals.cs" />
+     <Compile Include="Assets\Scripts\Others\MeshMaker.cs" />
      <Compile Include="Assets\Scripts\RDMaker.cs" />
-     <Compile Include="Assets\Scripts\TerrainMaker.cs" />
+     <Compile Include="Assets\Scripts\RDTerrainMaker.cs" />
      <None Include="Assets\Resources\Shaders\ToonBasic.shader" />
      <None Include="Assets\Resources\Shaders\ToonBasicOutline.shader" />
      <None Include="Assets\Resources\Shaders\ToonLitOutline.shader" />
