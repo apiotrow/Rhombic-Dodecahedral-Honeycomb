@@ -4,11 +4,37 @@ using System.Collections;
 public class RDMaker : MonoBehaviour {
 	Mesh mesh;
 
+	
 	void Start () {
 		mesh = GetComponent<MeshFilter>().mesh;
 		mesh.Clear(); 
-		mesh.vertices = Coords.RDverts;
 
+		//build RD
+		setVertices();
+		setTriangles();
+		setUVs();
+
+		mesh.RecalculateNormals();
+
+		//add collider
+		MeshCollider meshc = gameObject.AddComponent(typeof(MeshCollider)) as MeshCollider;
+		meshc.sharedMesh = mesh;
+	}
+
+	void setUVs(){
+		Vector2[] uvs = new Vector2[mesh.vertices.Length];
+		for (int i=0; i < uvs.Length; i++){
+			uvs [i] = new Vector2(mesh.vertices [i].x, mesh.vertices [i].z);
+		}
+		
+		mesh.uv = uvs;
+	}
+
+	void setVertices(){
+		mesh.vertices = Coords.RDverts;
+	}
+
+	void setTriangles(){
 		mesh.triangles = new int[] {
 			//TOP
 			//front
@@ -23,7 +49,7 @@ public class RDMaker : MonoBehaviour {
 			//left
 			8, 0, 12,
 			12, 1, 8,
-
+			
 			//BELT
 			//frontright
 			9, 3, 11,
@@ -37,7 +63,7 @@ public class RDMaker : MonoBehaviour {
 			//frontleft
 			12, 0, 9,
 			9, 4, 12,
-
+			
 			//BOTTOM
 			//front
 			10, 4, 9,
@@ -52,19 +78,5 @@ public class RDMaker : MonoBehaviour {
 			10, 5, 12,
 			12, 4, 10,
 		};
-
-		Vector2[] uvs = new Vector2[mesh.vertices.Length];
-		for (int i=0; i < uvs.Length; i++){
-			uvs [i] = new Vector2(mesh.vertices [i].x, mesh.vertices [i].z);
-		}
-
-		mesh.uv = uvs;
-
-		mesh.RecalculateNormals();
-
-		MeshCollider meshc = gameObject.AddComponent(typeof(MeshCollider)) as MeshCollider;
-		meshc.sharedMesh = mesh;
-	
 	}
-
 }
