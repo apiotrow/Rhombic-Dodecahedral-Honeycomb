@@ -2,13 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/*
+ * Creates single Rhombic Dodecahedrons
+ */
 public class RDMaker : MonoBehaviour {
 	Mesh mesh;
 
 	/*
-	 * Build the Rhombic Dodecahedron 
+	 * Builds the RD
 	 */
-	public void buildIt(Vector3 pos){
+	public void buildIt(Vector3 pos, bool combineMeshes){
 		mesh = GetComponent<MeshFilter>().mesh;
 		mesh.Clear(); 
 		
@@ -18,9 +21,11 @@ public class RDMaker : MonoBehaviour {
 		setUVs();
 		mesh.RecalculateNormals();
 		
-		//add collider
-		MeshCollider meshc = gameObject.AddComponent(typeof(MeshCollider)) as MeshCollider;
-		meshc.sharedMesh = mesh;
+		//add collider (for when we don't combine the meshes in RDTerrainMaker
+		if(!combineMeshes){
+			MeshCollider meshc = gameObject.AddComponent(typeof(MeshCollider)) as MeshCollider;
+			meshc.sharedMesh = mesh;
+		}
 	}
 
 	void setUVs(){
