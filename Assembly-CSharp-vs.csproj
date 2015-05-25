@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Coords.cs" />
      <Compile Include="Assets\Scripts\MeshMaker.cs" />
+     <Compile Include="Assets\Scripts\Old\RD.cs" />
      <Compile Include="Assets\Scripts\RDMaker.cs" />
      <Compile Include="Assets\Scripts\TerrainMaker.cs" />
      <None Include="Assets\Resources\Shaders\ToonBasic.shader" />
