@@ -13,48 +13,14 @@ public class MeshMaker : MonoBehaviour
 
 		MeshCollider meshc = gameObject.AddComponent(typeof(MeshCollider)) as MeshCollider;
 		meshc.sharedMesh = mesh;
+
 	}
 
 	void makeCubeJack()
 	{
-		mesh.Clear();       
+		mesh.Clear(); 
 
-		mesh.vertices = new Vector3[] {
-
-			//central cube
-			//top 0, 1, 2, 3
-			vec(-0.5f, 0.5f, -0.5f),
-			vec(-0.5f, 0.5f, 0.5f),
-			vec(0.5f, 0.5f, 0.5f), 
-			vec(0.5f, 0.5f, -0.5f),
-
-			//bottom 4, 5, 6, 7
-			vec(-0.5f, -0.5f, -0.5f),
-			vec(-0.5f, -0.5f, 0.5f),
-			vec(0.5f, -0.5f, 0.5f), 
-			vec(0.5f, -0.5f, -0.5f),
-
-
-			//surrounding cube centers
-			//top
-			vec(0, 1, 0),
-
-			//front
-			vec(0, -1, -1),
-
-			//bottom
-			vec(0, -1, 0),
-
-			//right
-			vec(1, 0, 0),
-
-			//left
-			vec(-1, 0, 0),
-
-			//back
-			vec(0, 0, 1),
-
-		};
+		mesh.vertices = Coords.RDverts;
 
 		mesh.triangles = new int[] {
 			//top
@@ -82,10 +48,6 @@ public class MeshMaker : MonoBehaviour
 			1, 5, 6,
 		};
 
-	}
-
-	Vector3 vec(float a, float b, float c){
-		return (new Vector3(a, b, c));
 	}
 
 

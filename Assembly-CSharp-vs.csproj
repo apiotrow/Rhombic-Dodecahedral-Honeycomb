@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{8264C194-096F-56DD-BD54-201183F31655}</ProjectGuid>
+	<ProjectGuid>{20355DBB-420C-F844-ECD5-70F1AE770DDA}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -46,7 +46,9 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Coords.cs" />
      <Compile Include="Assets\Scripts\MeshMaker.cs" />
+     <Compile Include="Assets\Scripts\RDMaker.cs" />
      <None Include="Assets\Resources\Shaders\ToonBasic.shader" />
      <None Include="Assets\Resources\Shaders\ToonBasicOutline.shader" />
      <None Include="Assets\Resources\Shaders\ToonLitOutline.shader" />
@@ -66,5 +68,6 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  
+  <ProjectExtensions xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><MonoDevelop><Properties><Policies><TextStylePolicy FileWidth="120" TabsToSpaces="False" EolMarker="Unix" inheritsSet="VisualStudio" inheritsScope="text/plain" scope="text/x-csharp" /><CSharpFormattingPolicy IndentSwitchBody="True" StatementBraceStyle="NextLineShifted2" BeforeMethodDeclarationParentheses="False" BeforeMethodCallParentheses="False" BeforeConstructorDeclarationParentheses="False" BeforeDelegateDeclarationParentheses="False" NewParentheses="False" inheritsSet="Mono" inheritsScope="text/x-csharp" scope="text/x-csharp" /></Policies></Properties></MonoDevelop></ProjectExtensions>
+
 </Project>
