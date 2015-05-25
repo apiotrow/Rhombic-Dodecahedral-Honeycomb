@@ -4,10 +4,11 @@ using System.Collections.Generic;
 
 public static class Coords {
 
-	public static HashSet<Vector3> hidden = new HashSet<Vector3>();
-	public static List<Vector3[]> hiddenFaces = new List<Vector3[]>();
+	public static HashSet<Vector3> hiddenTriangleTester = new HashSet<Vector3>();
+	public static Dictionary<Vector3, int[]> hiddenTriangles = new Dictionary<Vector3, int[]>();
+	public static List<int[]> triList = new List<int[]>();
 
-	public static List<Vector3[]> facesInTerrain = new List<Vector3[]>();
+	public static List<Vector3[]> trianglesInTerrain = new List<Vector3[]>();
 
 	public static int[] tris = new int[] {
 		//TOP
