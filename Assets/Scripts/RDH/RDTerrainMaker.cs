@@ -9,17 +9,9 @@ public class RDTerrainMaker : MonoBehaviour {
 	bool combineMeshes = true;
 
 	void Start () {
-		generateRDPlaneAtY(0, 50);
-		generateRDPlaneAtY(1, 3);
-		generateRDPlaneAtY(2, 4);
-		generateRDPlaneAtY(3, 5);
-		generateRDPlaneAtY(4, 6);
-		generateRDPlaneAtY(5, 7);
-		generateRDPlaneAtY(6, 8);
-		generateRDPlaneAtY(7, 9);
-		generateRDPlaneAtY(8, 10);
-		generateRDPlaneAtY(9, 11);
-		generateRDPlaneAtY(10, 12);
+		for(int a = 0; a < 10; a++){
+			generateRDPlaneAtY(a, 20 - (a * 2));
+		}
 
 		deleteHiddenFaces();
 
@@ -112,7 +104,14 @@ public class RDTerrainMaker : MonoBehaviour {
 	 * Instantiates a single RD and childs it to this game object
 	 */
 	void instantiateRD(Vector3 pos){
-		GameObject newRD = GameObject.Instantiate(Resources.Load("Prefabs/rd"), pos, Quaternion.identity) as GameObject;
+		string prefab;
+
+		if(Random.Range(0f, 1f) < 0.5f){
+			prefab = "rd2";
+		}else{
+			prefab = "rd";
+		}
+		GameObject newRD = GameObject.Instantiate(Resources.Load("Prefabs/" + prefab), pos, Quaternion.identity) as GameObject;
 		newRD.transform.SetParent(this.gameObject.transform);
 	}
 

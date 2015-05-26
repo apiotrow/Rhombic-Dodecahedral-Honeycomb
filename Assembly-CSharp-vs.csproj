@@ -46,10 +46,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Globals.cs" />
+     <Compile Include="Assets\Scripts\Fractal\FractalGen.cs" />
      <Compile Include="Assets\Scripts\Others\MeshMaker.cs" />
-     <Compile Include="Assets\Scripts\RDMaker.cs" />
-     <Compile Include="Assets\Scripts\RDTerrainMaker.cs" />
+     <Compile Include="Assets\Scripts\RDH\Globals.cs" />
+     <Compile Include="Assets\Scripts\RDH\RDMaker.cs" />
+     <Compile Include="Assets\Scripts\RDH\RDTerrainMaker.cs" />
      <None Include="Assets\Resources\Shaders\ToonBasic.shader" />
      <None Include="Assets\Resources\Shaders\ToonBasicOutline.shader" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
