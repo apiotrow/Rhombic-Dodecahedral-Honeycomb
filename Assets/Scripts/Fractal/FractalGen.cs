@@ -4,47 +4,80 @@ using System.Collections.Generic;
 using System.Text;
 
 public class FractalGen : MonoBehaviour {
-	List<Vector3> output;
 	int chunkSize = 300;
 	bool addingCollider = false;
+	string constructionBit = "Cube";
 
-	Dictionary<string, string> rules = new Dictionary<string, string>(){
+	//a: x+, b: z+, c: x-, d: z-, starting: a
+	Dictionary<string, string> levycurve = new Dictionary<string, string>(){
 		{"a", "ab"},
 		{"b", "bc"},
 		{"c", "cd"},
 		{"d", "da"}
 	};
 
+	//a: x+, b: z+, c: x-, d: z-, starting: a
+	Dictionary<string, string> juliaSetish = new Dictionary<string, string>(){
+		{"a", "bab"},
+		{"b", "cbc"},
+		{"c", "dcd"},
+		{"d", "ada"}
+	};
+
+	//a: x+, b: z+, c: x-, d: z-, starting: ac
+	Dictionary<string, string> spiraly = new Dictionary<string, string>(){
+		{"a", "dad"},
+		{"b", "ba"},
+		{"c", "bcb"},
+		{"d", "dc"}
+	};
+
+	//a: x+, b: z+, c: x-, d: z-, starting: ac
+	Dictionary<string, string> rhombus = new Dictionary<string, string>(){
+		{"a", "bcb"},
+		{"b", "ba"},
+		{"c", "dad"},
+		{"d", "dc"}
+	};
+
+	Dictionary<string, string> rules = new Dictionary<string, string>(){
+		{"a", "bcb"},
+		{"b", "ba"},
+		{"c", "dad"},
+		{"d", "dc"}
+	};
+	
 
 	void Start () {
-		string LString = generateLString(rules, 10, "a");
+		string LString = generateLStringDeterministic(rhombus, 7, "ca");
+		List<Vector3> output = new List<Vector3>();
 
-
-		float x;
-		float z;
-		
-		x = 0f;
-		z = 0f;
+		float x = 0;
+		float y = 0;
+		float z = 0;
 
 		float increment = 1f;
-		output = new List<Vector3>();
 		foreach(char c in LString){
 			switch(c){
 				case 'a':
 					x += increment;
+//					y += increment;
 					break;
 				case 'b':
 					z += increment;
+//					y += increment;
 					break;
 				case 'c':
 					x -= increment;
+//					y -= increment;
 					break;
 				case 'd':
 					z -= increment;
+//					y -= increment;
 					break;	
 			}
 				
-			output.Add(new Vector3(x, 0f, z));
+			output.Add(new Vector3(x, y, z));
 		}
 
 		makeChunk(getNewListWithNoDuplicates(output));
@@ -55,7 +88,7 @@ public class FractalGen : MonoBehaviour {
 	/*
 	 * Generate an L string using specified rules
 	 */
-	string generateLString(Dictionary<string, string> rules, int iterations, string initString){
+	string generateLStringDeterministic(Dictionary<string, string> rules, int iterations, string initString){
 		for(int i = 0; i < iterations; i++){
 			int s = 0;
 			while(s != initString.Length){
@@ -114,12 +147,13 @@ public class FractalGen : MonoBehaviour {
 	 */
 	IEnumerator makeChunkParts(List<Vector3> chunkVecs){
 		//instantiate a new chunk
-		GameObject newChunk = GameObject.Instantiate(Resources.Load("Prefabs/Fractal/Chunk")/*, new Vector3(0f, 0f, 0f), Quaternion.identity*/) as GameObject;
+		GameObject newChunk = GameObject.Instantiate(Resources.Load("Prefabs/Fractal/Chunk")) as GameObject;
 		newChunk.transform.SetParent(GameObject.Find("Chunks").transform);
 
 		//instantiate chunk parts and parent them to the new chunk
 		foreach(Vector3 vec in chunkVecs){
-			GameObject g = GameObject.Instantiate(Resources.Load("Prefabs/Fractal/marker"), vec, Quaternion.identity) as GameObject;
+			GameObject g =
+				GameObject.Instantiate(Resources.Load("Prefabs/Fractal/" + constructionBit), vec, Quaternion.identity) as GameObject;
 			g.transform.SetParent(newChunk.gameObject.transform);
 		}
 
@@ -171,7 +205,7 @@ public class FractalGen : MonoBehaviour {
 		for(int i = 0; i < 20; i++){
 			x = Mathf.Cos(x) * x * 4;
 			z = Mathf.Cos(z) * z * 4;
-			output.Add(new Vector3(x, 0f, z));
+//			output.Add(new Vector3(x, 0f, z));
 		}
 	}
 }
