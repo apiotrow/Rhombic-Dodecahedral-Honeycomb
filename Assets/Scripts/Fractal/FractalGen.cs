@@ -5,7 +5,8 @@ using System.Text;
 
 public class FractalGen : MonoBehaviour {
 	List<Vector3> output;
-	int chunkSize = 200;
+	int chunkSize = 300;
+	bool addingCollider = false;
 
 	Dictionary<string, string> rules = new Dictionary<string, string>(){
 		{"a", "ab"},
@@ -14,15 +15,10 @@ public class FractalGen : MonoBehaviour {
 		{"d", "da"}
 	};
 
-	void Start () {
-		output = new List<Vector3>();
 
-		string iter = "a";
-		for(int e = 0; e < 6; e++){
-			foreach(char c in iter){
-				iter = iter + rules[c.ToString()];
-			}
-		}
+	void Start () {
+		string LString = generateLString(rules, 10, "a");
+
 
 		float x;
 		float z;
@@ -31,7 +27,8 @@ public class FractalGen : MonoBehaviour {
 		z = 0f;
 
 		float increment = 1f;
-		foreach(char c in iter){
+		output = new List<Vector3>();
+		foreach(char c in LString){
 			switch(c){
 				case 'a':
 					x += increment;
@@ -50,10 +47,27 @@ public class FractalGen : MonoBehaviour {
 			output.Add(new Vector3(x, 0f, z));
 		}
 
-
 		makeChunk(getNewListWithNoDuplicates(output));
 
+//		GameObject.Find("FPSController").transform.position = output[0];
+	}
 
+	/*
+	 * Generate an L string using specified rules
+	 */
+	string generateLString(Dictionary<string, string> rules, int iterations, string initString){
+		for(int i = 0; i < iterations; i++){
+			int s = 0;
+			while(s != initString.Length){
+				string Lreplacement = rules[initString[s].ToString()];
+
+				initString = initString.Remove(s, 1);
+				initString = initString.Insert(s, Lreplacement);
+				s += Lreplacement.Length;
+			}
+		}
+	
+		return initString;
 	}
 
 	/*
@@ -133,8 +147,10 @@ public class FractalGen : MonoBehaviour {
 		newChunk.transform.gameObject.active = true;
 
 		//add a collider to the combined mesh
-		MeshCollider meshc = newChunk.AddComponent(typeof(MeshCollider)) as MeshCollider;
-		meshc.sharedMesh = newChunk.transform.GetComponent<MeshFilter>().mesh;
+		if(addingCollider){
+			MeshCollider meshc = newChunk.AddComponent(typeof(MeshCollider)) as MeshCollider;
+			meshc.sharedMesh = newChunk.transform.GetComponent<MeshFilter>().mesh;
+		}
 
 		//delete the children of the chunk, as they aren't needed anymore
 		int chunkChildCount = newChunk.transform.childCount;
