@@ -11,6 +11,8 @@ public class FractalGen : MonoBehaviour {
 	float x = 0;
 	float y = 0;
 	float z = 0;
+	Queue<string> chunkQueue = new Queue<string>();
+	bool readyForNextChunk = true;
 	
 	//a: x+, b: z+, c: x-, d: z-, starting: a
 	Dictionary<string, string> levycurve = new Dictionary<string, string>(){
@@ -64,13 +66,16 @@ public class FractalGen : MonoBehaviour {
 	};
 
 	void Start () {
-		StartCoroutine(generateLStringDeterministic(spiraly, 13, "ac"));
+		StartCoroutine(generateLStringDeterministicFrontLoad(spiraly, 13, "ac"));
+//		StartCoroutine(generateLStringDeterministicRecurse(spiraly, 9, 0, "ac"));
+		StartCoroutine(chunkFactory());
 	}
-
+	
 	/*
-	 * Generate an L string using specified rules
+	 * Generate an L string using specified rules. Queue of chunks is created
+	 * before any chunk is rendered.
 	 */
-	IEnumerator generateLStringDeterministic(Dictionary<string, string> rules, int iterations, string initString){
+	IEnumerator generateLStringDeterministicFrontLoad(Dictionary<string, string> rules, int iterations, string initString){
 		Stack<string> stringStack = new Stack<string>();
 
 		int n = 0;
@@ -89,28 +94,31 @@ public class FractalGen : MonoBehaviour {
 				}
 				n++;
 			}
+			//WOULD else enqueue chunk
 
 			//continually halve the new string until its under our size limit.
 			//push remainders to the stack.
-			//length limit must be multiple of chunk size
 			while(part.Length > chunkSize){
 				//push second half of string to stack with iteration level at front
 				stringStack.Push(n.ToString() + ":" + part.Substring((int)Mathf.Floor(part.Length / 2)));
+				//WOULD StartCoroutine this of part, send iter level
 				
 				//make part just the first half
 				part = part.Substring(0, (int)Mathf.Floor(part.Length / 2) - 1);
 			}
+			//WOULD StartCoroutine this of part, send iter level
 
 			//if on last iteration and nothing is on the stack, we're on last segment
 			if(n == iterations && stringStack.Count == 0){
 				//MAKE CHUNK FROM PART
-				StartCoroutine(makeChunk(part));
+				print("queueing");
+				chunkQueue.Enqueue(part);
 				break;
-
 			//if on last iteration but things are on the stack, we have more
 			}else if(n == iterations && stringStack.Count != 0){
 				//MAKE CHUNK FROM PART
-				StartCoroutine(makeChunk(part));
+				print("queueing");
+				chunkQueue.Enqueue(part);
 
 				//if next item on stack is on this level of iteration, it
 				//must be same length or less, so we can chunk it without halving
@@ -122,9 +130,9 @@ public class FractalGen : MonoBehaviour {
 					part = part.Substring(part.IndexOf(":") + 1);
 
 					//MAKE CHUNK FROM PART
-					StartCoroutine(makeChunk(part));
+					print("queueing");
+					chunkQueue.Enqueue(part);
 				}
-
 
 				//if that was the last thing on the stack, we're done
 				if(stringStack.Count == 0){
@@ -147,12 +155,67 @@ public class FractalGen : MonoBehaviour {
 		yield return null;
 	}
 
+	
+	/*
+	 * Recursive version L string generator. Hangs up on larger iterations.
+	 */
+	IEnumerator generateLStringDeterministicRecurse(Dictionary<string, string> rules, int iterations, int iterLevel, string segment){
+		
+		string part = segment;
+		//take us to n+1 by expanding the current part.
+		//only do this if segment isn't on last iteration level.
+		int s = 0;
+		if(iterLevel != iterations){
+			while(s != part.Length){
+				string Lreplacement = rules[part[s].ToString()];
+				
+				part = part.Remove(s, 1);
+				part = part.Insert(s, Lreplacement);
+				s += Lreplacement.Length;
+			}
+			iterLevel++;
+		}else{
+			//iter level is last. ready to queue.
+			chunkQueue.Enqueue(part);
+		}
+		
+		//continually halve the new string until its under our size limit.
+		//push remainders to the stack.
+		while(part.Length > chunkSize){
+			//call this coroutine with excess half
+			StartCoroutine(generateLStringDeterministicRecurse(rules, iterations, iterLevel, part));
+			
+			//make part just the first half
+			part = part.Substring(0, (int)Mathf.Floor(part.Length / 2) - 1);
+		}
+		
+		yield return new WaitForSeconds(0.01f);
+		
+		//call this coroutine with remaining segment
+		StartCoroutine(generateLStringDeterministicRecurse(rules, iterations, iterLevel, part));
+		
+	}
+
+
+	/*
+	 * Waits for L string segments to arrive in the chunk queue
+	 * and generates them.
+	 */
+	IEnumerator chunkFactory(){
+		while(true){
+			if(readyForNextChunk && chunkQueue.Count != 0){
+				print("making chunk");
+				StartCoroutine(makeChunk(chunkQueue.Dequeue()));
+				readyForNextChunk = false;
+			}
+			yield return null;
+		}
+	}
+
 	/*
 	 * Make a chunk of size chunkSize
 	 */
 	IEnumerator makeChunk(string LString){
-//		print(LString);
-
 		List<Vector3> finals = new List<Vector3>();
 		float increment = 1f;
 		foreach(char c in LString){
@@ -251,6 +314,9 @@ public class FractalGen : MonoBehaviour {
 		for(int h = 0; h < chunkChildCount; h++) {
 			Destroy(newChunk.transform.GetChild(h).gameObject);
 		}
+
 		yield return null;
+
+		readyForNextChunk = true;
 	}
 }
