@@ -7,9 +7,7 @@ public class FractalGen : MonoBehaviour {
 	int chunkSize = 500;
 	bool addingCollider = false;
 	string constructionBit = "Cube";
-	string LString = "";
 	HashSet<Vector3> dontDupe = new HashSet<Vector3>();
-	List<Vector3> output = new List<Vector3>();
 	float x = 0;
 	float y = 0;
 	float z = 0;
@@ -64,67 +62,9 @@ public class FractalGen : MonoBehaviour {
 		{"e", "ded"},
 		{"f", "fe"}
 	};
-	
 
 	void Start () {
-//		string LString = generateLStringDeterministic(rules, 5, "ace");
-		StartCoroutine(generateLStringDeterministic(levycurve, 13, "a"));
-
-//		List<Vector3> output = new List<Vector3>();
-//
-//		float x = 0;
-//		float y = 0;
-//		float z = 0;
-//
-//		float increment = 1f;
-//		foreach(char c in LString){
-//			switch(c){
-//				case 'a':
-//					x += increment;
-//					break;
-//				case 'b':
-//					y += increment;
-//					break;
-//				case 'c':
-//					z += increment;
-//					break;
-//				case 'd':
-//					x -= increment;
-//					break;	
-//				case 'e':
-//					y -= increment;
-//					break;
-//				case 'f':
-//					z -= increment;
-//					break;
-//			}
-//			output.Add(new Vector3(x, y, z));
-//		}
-//		foreach(char c in LString){
-//			switch(c){
-//				case 'a':
-//					x += increment;
-////					y += increment;
-//					break;
-//				case 'b':
-//					z += increment;
-////					y -= increment;
-//					break;
-//				case 'c':
-//					x -= increment;
-////					y += increment;
-//					break;
-//				case 'd':
-//					z -= increment;
-////					y -= increment;
-//					break;	
-//			}
-//			output.Add(new Vector3(x, y, z));
-//		}
-//
-//		makeChunk(getNewListWithNoDuplicates(output));
-
-//		GameObject.Find("FPSController").transform.position = output[0];
+		StartCoroutine(generateLStringDeterministic(spiraly, 9, "ac"));
 	}
 
 	/*
@@ -135,12 +75,11 @@ public class FractalGen : MonoBehaviour {
 
 		int n = 0;
 		string part = initString;
-		bool done = false;
-		while(!done){
+		int overflow = 0;
+		while(true){
 
-			//take us to n+1
+			//take us to n+1 by expanding the current part
 			int s = 0;
-//			print("converting " + part);
 			while(s != part.Length){
 				string Lreplacement = rules[part[s].ToString()];
 				
@@ -149,108 +88,78 @@ public class FractalGen : MonoBehaviour {
 				s += Lreplacement.Length;
 			}
 			n++;
-//			print("iteration " + n + " is " + part);
 
-
-
+			//continually halve the new string until its under our size limit.
+			//push remainders to the stack.
 			//length limit must be multiple of chunk size
 			while(part.Length > chunkSize){
 				//push second half of string to stack with iteration level at front
-//				print("pushing: " + (n.ToString() + ":" + part.Substring((int)Mathf.Floor(part.Length / 2)) + " to stack"));
 				stringStack.Push(n.ToString() + ":" + part.Substring((int)Mathf.Floor(part.Length / 2)));
 				
 				//make part just the first half
 				part = part.Substring(0, (int)Mathf.Floor(part.Length / 2) - 1);
 			}
 
+			print(n + " " + part);
+
+			//if on last iteration and nothing is on the stack, we're on last segment
 			if(n == iterations && stringStack.Count == 0){
 				//MAKE CHUNK FROM PART
-				if(part.Contains(":"))
-				   part = part.Substring(part.IndexOf(":") + 1);
 				StartCoroutine(makeChunk(part));
-//				print("system was small or we're on last chunk. make chunk. done");
-				done = true;
 				break;
+
+			//if on last iteration but things are on the stack, we have more
 			}else if(n == iterations && stringStack.Count != 0){
 				//MAKE CHUNK FROM PART
-				if(part.Contains(":"))
-					part = part.Substring(part.IndexOf(":") + 1);
 				StartCoroutine(makeChunk(part));
-//				print("segment is last iteration level. making chunk of: " + part);
 
+				//if next item on stack is on this level of iteration, it is same 
+				//length as current part. we can make chunk without halving
 				if(stringStack.Peek().Contains(iterations.ToString())){
 					//pop next segment
 					part = stringStack.Pop();
+
 					//remove iteration level from string
-					part = part.Substring(part.IndexOf(":") + 1); //? not start on right index?
+					part = part.Substring(part.IndexOf(":") + 1);
+
 					//MAKE CHUNK FROM PART
 					StartCoroutine(makeChunk(part));
-//					print("segment is last iteration level. making chunk of: " + part);
-
 				}
 
+
+				//if that was the last thing on the stack, we're done
 				if(stringStack.Count == 0){
-					done = true;
+					break;
+
+				//if not, get part ready for next iteration
 				}else{
 					//pop next segment
 					part = stringStack.Pop();
 					
 					//reset iterator to match this segment's iteration level
 					n = int.Parse(part.Substring(0, part.IndexOf(":")));
-//					print("popped " + part + ". stack count is " + stringStack.Count);
 					
 					//remove iteration level from string
-					part = part.Substring(part.IndexOf(":") + 1); //? not start on right index?
+					part = part.Substring(part.IndexOf(":") + 1);
 				}
-
 			}
-
+			overflow++;
+			if(overflow == 100){
+				print("overflow");
+				break;
+			}
 		}
 
 		yield return null;
 	}
 
-//	string generateLStringDeterministic(Dictionary<string, string> rules, int iterations, string initString){
-//		for(int i = 0; i < iterations; i++){
-//			int s = 0;
-//			while(s != initString.Length){
-//				string Lreplacement = rules[initString[s].ToString()];
-//				
-//				initString = initString.Remove(s, 1);
-//				initString = initString.Insert(s, Lreplacement);
-//				s += Lreplacement.Length;
-//			}
-//		}
-//		
-//		return initString;
-//	}
-
-
-	/*
-	 * Given a list of Vector3s, return a new list of the same
-	 * type but without duplicate entries
-	 */
-//	List<Vector3> getNewListWithNoDuplicates(List<Vector3> list){
-//		List<Vector3> finals = new List<Vector3>();
-//
-//		foreach(Vector3 vec in list){
-//			if(dontDupe.Add(vec)){
-//				finals.Add(vec);
-//			}
-//		}
-//
-//		return finals;
-//	}
-
 	/*
 	 * Make a chunk of size chunkSize
 	 */
 	IEnumerator makeChunk(string LString){
-		print(LString);
+//		print(LString);
 
-		
-
-		
+		List<Vector3> finals = new List<Vector3>();
 		float increment = 1f;
 		foreach(char c in LString){
 			switch(c){
@@ -273,19 +182,11 @@ public class FractalGen : MonoBehaviour {
 					z -= increment;
 					break;
 			}
-			output.Add(new Vector3(x, y, z));
-		}
 
-
-		List<Vector3> finals = new List<Vector3>();
-		
-		foreach(Vector3 vec in output){
-			if(dontDupe.Add(vec)){
-				finals.Add(vec);
+			if(dontDupe.Add(new Vector3(x, y, z))){
+				finals.Add(new Vector3(x, y, z));
 			}
 		}
-
-
 
 		List<Vector3> nextChunkVecs = new List<Vector3>();
 		int q = 0;
@@ -304,26 +205,6 @@ public class FractalGen : MonoBehaviour {
 
 		yield return null;
 	}
-
-	/*
-	 * Make a chunk of size chunkSize
-	 */
-//	void makeChunk(List<Vector3> f){
-//		List<Vector3> nextChunkVecs = new List<Vector3>();
-//		int q = 0;
-//		for(int i = 0; i < f.Count; i++){
-//			nextChunkVecs.Add(f[i]);
-//			q++;
-//			
-//			if(q == chunkSize){
-//				StartCoroutine(makeChunkParts(nextChunkVecs));
-//				nextChunkVecs.Clear();
-//				q = 0;
-//			}else if(i == f.Count - 1){
-//				StartCoroutine(makeChunkParts(nextChunkVecs));
-//			}
-//		}
-//	}
 
 	/*
 	 * -->void makeChunk
