@@ -94,31 +94,28 @@ public class FractalGen : MonoBehaviour {
 				}
 				n++;
 			}
-			//WOULD else enqueue chunk
 
 			//continually halve the new string until its under our size limit.
 			//push remainders to the stack.
 			while(part.Length > chunkSize){
 				//push second half of string to stack with iteration level at front
 				stringStack.Push(n.ToString() + ":" + part.Substring((int)Mathf.Floor(part.Length / 2)));
-				//WOULD StartCoroutine this of part, send iter level
 				
 				//make part just the first half
 				part = part.Substring(0, (int)Mathf.Floor(part.Length / 2) - 1);
 			}
-			//WOULD StartCoroutine this of part, send iter level
 
 			//if on last iteration and nothing is on the stack, we're on last segment
 			if(n == iterations && stringStack.Count == 0){
 				//MAKE CHUNK FROM PART
-				print("queueing");
 				chunkQueue.Enqueue(part);
+				yield return null;
 				break;
 			//if on last iteration but things are on the stack, we have more
 			}else if(n == iterations && stringStack.Count != 0){
 				//MAKE CHUNK FROM PART
-				print("queueing");
 				chunkQueue.Enqueue(part);
+				yield return null;
 
 				//if next item on stack is on this level of iteration, it
 				//must be same length or less, so we can chunk it without halving
@@ -130,8 +127,8 @@ public class FractalGen : MonoBehaviour {
 					part = part.Substring(part.IndexOf(":") + 1);
 
 					//MAKE CHUNK FROM PART
-					print("queueing");
 					chunkQueue.Enqueue(part);
+					yield return null;
 				}
 
 				//if that was the last thing on the stack, we're done
@@ -154,7 +151,6 @@ public class FractalGen : MonoBehaviour {
 
 		yield return null;
 	}
-
 	
 	/*
 	 * Recursive version L string generator. Hangs up on larger iterations.
@@ -195,8 +191,7 @@ public class FractalGen : MonoBehaviour {
 		StartCoroutine(generateLStringDeterministicRecurse(rules, iterations, iterLevel, part));
 		
 	}
-
-
+	
 	/*
 	 * Waits for L string segments to arrive in the chunk queue
 	 * and generates them.
@@ -204,7 +199,6 @@ public class FractalGen : MonoBehaviour {
 	IEnumerator chunkFactory(){
 		while(true){
 			if(readyForNextChunk && chunkQueue.Count != 0){
-				print("making chunk");
 				StartCoroutine(makeChunk(chunkQueue.Dequeue()));
 				readyForNextChunk = false;
 			}
