@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using System.Text;
 
 public class FractalGen : MonoBehaviour {
-	int chunkSize = 100;
+	//the smaller the chunk size is, the higher framerate is when building.
+	//however, small chunks make the bug where the last chunk won't render
+	//more pronounced.
+	int chunkSize = 500; 
 	bool addingCollider = false;
 	string constructionBit = "marker";
 	HashSet<Vector3> dontDupe = new HashSet<Vector3>();
@@ -14,7 +17,7 @@ public class FractalGen : MonoBehaviour {
 	Queue<string> chunkQueue = new Queue<string>();
 
 	void Start () {
-		StartCoroutine(generateLStringDeterministic(Grammars.spiraly, 11, "ac"));
+		StartCoroutine(generateLStringDeterministic(Grammars.levycurve, 20, "a"));
 		StartCoroutine(chunkFactory());
 	}
 	
