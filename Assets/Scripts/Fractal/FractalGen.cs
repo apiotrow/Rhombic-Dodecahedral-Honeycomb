@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Text;
 
 public class FractalGen : MonoBehaviour {
-	int chunkSize = 300;
+	int chunkSize = 2000;
 	bool addingCollider = false;
-	string constructionBit = "Cube";
+	string constructionBit = "marker";
 	HashSet<Vector3> dontDupe = new HashSet<Vector3>();
 	float x = 0;
 	float y = 0;
@@ -64,7 +64,7 @@ public class FractalGen : MonoBehaviour {
 	};
 
 	void Start () {
-		StartCoroutine(generateLStringDeterministic(spiraly, 11, "ac"));
+		StartCoroutine(generateLStringDeterministic(spiraly, 13, "ac"));
 	}
 
 	/*
@@ -213,7 +213,7 @@ public class FractalGen : MonoBehaviour {
 		//instantiate chunk parts and parent them to the new chunk
 		foreach(Vector3 vec in chunkVecs){
 			GameObject g =
-				GameObject.Instantiate(Resources.Load("Prefabs/Fractal/" + constructionBit), vec, Quaternion.identity) as GameObject;
+				GameObject.Instantiate(Resources.Load("Prefabs/Fractal/" + constructionBit), vec, Quaternion.Euler(new Vector3(90f, 0f, 0f))) as GameObject;
 			g.transform.SetParent(newChunk.gameObject.transform);
 		}
 

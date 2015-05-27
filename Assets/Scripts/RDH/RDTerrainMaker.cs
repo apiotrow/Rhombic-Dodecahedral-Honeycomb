@@ -9,9 +9,12 @@ public class RDTerrainMaker : MonoBehaviour {
 	bool combineMeshes = true;
 
 	void Start () {
-		for(int a = 0; a < 10; a++){
-			generateRDPlaneAtY(a, 20 - (a * 2));
-		}
+
+		generateRDPlaneAtY(1, 1);
+
+//		for(int a = 0; a < 10; a++){
+//			generateRDPlaneAtY(a, 20 - (a * 2));
+//		}
 
 		deleteHiddenFaces();
 
