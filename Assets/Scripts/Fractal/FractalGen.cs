@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 
 public class FractalGen : MonoBehaviour {
-	int chunkSize = 2000;
+	int chunkSize = 100;
 	bool addingCollider = false;
 	string constructionBit = "marker";
 	HashSet<Vector3> dontDupe = new HashSet<Vector3>();
@@ -12,70 +12,16 @@ public class FractalGen : MonoBehaviour {
 	float y = 0;
 	float z = 0;
 	Queue<string> chunkQueue = new Queue<string>();
-	bool readyForNextChunk = true;
-	
-	//a: x+, b: z+, c: x-, d: z-, starting: a
-	Dictionary<string, string> levycurve = new Dictionary<string, string>(){
-		{"a", "ab"},
-		{"b", "bc"},
-		{"c", "cd"},
-		{"d", "da"}
-	};
-
-	//a: x+, b: z+, c: x-, d: z-, starting: a
-	Dictionary<string, string> juliaSetish = new Dictionary<string, string>(){
-		{"a", "bab"},
-		{"b", "cbc"},
-		{"c", "dcd"},
-		{"d", "ada"}
-	};
-
-	//a: x+, b: z+, c: x-, d: z-, starting: ac
-	Dictionary<string, string> spiraly = new Dictionary<string, string>(){
-		{"a", "dad"},
-		{"b", "ba"},
-		{"c", "bcb"},
-		{"d", "dc"}
-	};
-
-	//a: x+, b: z+, c: x-, d: z-, starting: ac
-	Dictionary<string, string> rhombus = new Dictionary<string, string>(){
-		{"a", "bcb"},
-		{"b", "ba"},
-		{"c", "dad"},
-		{"d", "dc"}
-	};
-
-	////a: x+, b: z+, c: x-, d: z-, starting: ace
-	Dictionary<string, string> loops = new Dictionary<string, string>(){
-		{"a", "faf"},
-		{"b", "ba"},
-		{"c", "bcb"},
-		{"d", "dc"},
-		{"e", "ded"},
-		{"f", "fe"}
-	};
-
-	Dictionary<string, string> rules = new Dictionary<string, string>(){
-		{"a", "faf"},
-		{"b", "ba"},
-		{"c", "bcb"},
-		{"d", "dc"},
-		{"e", "ded"},
-		{"f", "fe"}
-	};
 
 	void Start () {
-		StartCoroutine(generateLStringDeterministicFrontLoad(spiraly, 13, "ac"));
-//		StartCoroutine(generateLStringDeterministicRecurse(spiraly, 9, 0, "ac"));
+		StartCoroutine(generateLStringDeterministic(Grammars.spiraly, 11, "ac"));
 		StartCoroutine(chunkFactory());
 	}
 	
 	/*
-	 * Generate an L string using specified rules. Queue of chunks is created
-	 * before any chunk is rendered.
+	 * Generate an L string using specified rules.
 	 */
-	IEnumerator generateLStringDeterministicFrontLoad(Dictionary<string, string> rules, int iterations, string initString){
+	IEnumerator generateLStringDeterministic(Dictionary<string, string> rules, int iterations, string initString){
 		Stack<string> stringStack = new Stack<string>();
 
 		int n = 0;
@@ -107,13 +53,15 @@ public class FractalGen : MonoBehaviour {
 
 			//if on last iteration and nothing is on the stack, we're on last segment
 			if(n == iterations && stringStack.Count == 0){
-				//MAKE CHUNK FROM PART
+				//send chunk to the queue for production.
+				//yield so we can take a moment to build the chunk
 				chunkQueue.Enqueue(part);
 				yield return null;
-				break;
+				//break;
 			//if on last iteration but things are on the stack, we have more
 			}else if(n == iterations && stringStack.Count != 0){
-				//MAKE CHUNK FROM PART
+				//send chunk to the queue for production.
+				//yield so we can take a moment to build the chunk
 				chunkQueue.Enqueue(part);
 				yield return null;
 
@@ -126,7 +74,8 @@ public class FractalGen : MonoBehaviour {
 					//remove iteration level from string
 					part = part.Substring(part.IndexOf(":") + 1);
 
-					//MAKE CHUNK FROM PART
+					//send chunk to the queue for production.
+					//yield so we can take a moment to build the chunk
 					chunkQueue.Enqueue(part);
 					yield return null;
 				}
@@ -153,54 +102,13 @@ public class FractalGen : MonoBehaviour {
 	}
 	
 	/*
-	 * Recursive version L string generator. Hangs up on larger iterations.
-	 */
-	IEnumerator generateLStringDeterministicRecurse(Dictionary<string, string> rules, int iterations, int iterLevel, string segment){
-		
-		string part = segment;
-		//take us to n+1 by expanding the current part.
-		//only do this if segment isn't on last iteration level.
-		int s = 0;
-		if(iterLevel != iterations){
-			while(s != part.Length){
-				string Lreplacement = rules[part[s].ToString()];
-				
-				part = part.Remove(s, 1);
-				part = part.Insert(s, Lreplacement);
-				s += Lreplacement.Length;
-			}
-			iterLevel++;
-		}else{
-			//iter level is last. ready to queue.
-			chunkQueue.Enqueue(part);
-		}
-		
-		//continually halve the new string until its under our size limit.
-		//push remainders to the stack.
-		while(part.Length > chunkSize){
-			//call this coroutine with excess half
-			StartCoroutine(generateLStringDeterministicRecurse(rules, iterations, iterLevel, part));
-			
-			//make part just the first half
-			part = part.Substring(0, (int)Mathf.Floor(part.Length / 2) - 1);
-		}
-		
-		yield return new WaitForSeconds(0.01f);
-		
-		//call this coroutine with remaining segment
-		StartCoroutine(generateLStringDeterministicRecurse(rules, iterations, iterLevel, part));
-		
-	}
-	
-	/*
 	 * Waits for L string segments to arrive in the chunk queue
 	 * and generates them.
 	 */
 	IEnumerator chunkFactory(){
 		while(true){
-			if(readyForNextChunk && chunkQueue.Count != 0){
+			if(chunkQueue.Count != 0){
 				StartCoroutine(makeChunk(chunkQueue.Dequeue()));
-				readyForNextChunk = false;
 			}
 			yield return null;
 		}
@@ -272,6 +180,7 @@ public class FractalGen : MonoBehaviour {
 			GameObject g =
 				GameObject.Instantiate(Resources.Load("Prefabs/Fractal/" + constructionBit), vec, Quaternion.Euler(new Vector3(90f, 0f, 0f))) as GameObject;
 			g.transform.SetParent(newChunk.gameObject.transform);
+//			yield return null; //makes trippy effect
 		}
 
 		//now combine all their meshes
@@ -310,7 +219,5 @@ public class FractalGen : MonoBehaviour {
 		}
 
 		yield return null;
-
-		readyForNextChunk = true;
 	}
 }

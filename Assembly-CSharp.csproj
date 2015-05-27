@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Fractal\FractalGen.cs" />
+     <Compile Include="Assets\Scripts\Fractal\Grammars.cs" />
      <Compile Include="Assets\Scripts\Others\MeshMaker.cs" />
      <Compile Include="Assets\Scripts\RDH\Globals.cs" />
      <Compile Include="Assets\Scripts\RDH\RDMaker.cs" />
