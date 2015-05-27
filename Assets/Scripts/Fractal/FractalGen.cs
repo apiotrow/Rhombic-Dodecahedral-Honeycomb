@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 
 public class FractalGen : MonoBehaviour {
-	int chunkSize = 500;
+	int chunkSize = 300;
 	bool addingCollider = false;
 	string constructionBit = "Cube";
 	HashSet<Vector3> dontDupe = new HashSet<Vector3>();
@@ -64,7 +64,7 @@ public class FractalGen : MonoBehaviour {
 	};
 
 	void Start () {
-		StartCoroutine(generateLStringDeterministic(spiraly, 9, "ac"));
+		StartCoroutine(generateLStringDeterministic(spiraly, 11, "ac"));
 	}
 
 	/*
@@ -75,19 +75,20 @@ public class FractalGen : MonoBehaviour {
 
 		int n = 0;
 		string part = initString;
-		int overflow = 0;
 		while(true){
-
-			//take us to n+1 by expanding the current part
+			//take us to n+1 by expanding the current part.
+			//only do this if segment isn't on last iteration level.
 			int s = 0;
-			while(s != part.Length){
-				string Lreplacement = rules[part[s].ToString()];
-				
-				part = part.Remove(s, 1);
-				part = part.Insert(s, Lreplacement);
-				s += Lreplacement.Length;
+			if(n != iterations){
+				while(s != part.Length){
+					string Lreplacement = rules[part[s].ToString()];
+					
+					part = part.Remove(s, 1);
+					part = part.Insert(s, Lreplacement);
+					s += Lreplacement.Length;
+				}
+				n++;
 			}
-			n++;
 
 			//continually halve the new string until its under our size limit.
 			//push remainders to the stack.
@@ -100,8 +101,6 @@ public class FractalGen : MonoBehaviour {
 				part = part.Substring(0, (int)Mathf.Floor(part.Length / 2) - 1);
 			}
 
-			print(n + " " + part);
-
 			//if on last iteration and nothing is on the stack, we're on last segment
 			if(n == iterations && stringStack.Count == 0){
 				//MAKE CHUNK FROM PART
@@ -113,9 +112,9 @@ public class FractalGen : MonoBehaviour {
 				//MAKE CHUNK FROM PART
 				StartCoroutine(makeChunk(part));
 
-				//if next item on stack is on this level of iteration, it is same 
-				//length as current part. we can make chunk without halving
-				if(stringStack.Peek().Contains(iterations.ToString())){
+				//if next item on stack is on this level of iteration, it
+				//must be same length or less, so we can chunk it without halving
+				if(stringStack.Count != 0 && stringStack.Peek().Contains(iterations.ToString())){
 					//pop next segment
 					part = stringStack.Pop();
 
@@ -142,11 +141,6 @@ public class FractalGen : MonoBehaviour {
 					//remove iteration level from string
 					part = part.Substring(part.IndexOf(":") + 1);
 				}
-			}
-			overflow++;
-			if(overflow == 100){
-				print("overflow");
-				break;
 			}
 		}
 
