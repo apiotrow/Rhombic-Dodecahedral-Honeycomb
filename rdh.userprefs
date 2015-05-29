@@ -1,10 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../artf/Assets/1.Scripts/Units/Camera/CameraAdjuster.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Fractal/FractalGen.cs">
     <Files>
-      <File FileName="../artf/Assets/1.Scripts/LevelEditor/UpgradeUI.cs" Line="183" Column="38" />
-      <File FileName="../artf/Assets/1.Scripts/LevelEditor/ToolTips.cs" Line="27" Column="119" />
-      <File FileName="../artf/Assets/1.Scripts/Units/Camera/CameraAdjuster.cs" Line="101" Column="52" />
+      <File FileName="Assets/Scripts/Fractal/FractalGen.cs" Line="11" Column="22" />
+      <File FileName="Assets/Scripts/Fractal/Grammars.cs" Line="7" Column="52" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
