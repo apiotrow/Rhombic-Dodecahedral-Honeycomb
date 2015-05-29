@@ -7,18 +7,34 @@ public class FractalGen : MonoBehaviour {
 	//the smaller the chunk size is, the higher framerate is when building.
 	//however, small chunks make the bug where the last chunk won't render
 	//more pronounced.
-	int chunkSize = 500; 
+	int chunkSize = 50;
+	int maxChunks = 100;
 	bool addingCollider = false;
 	string constructionBit = "marker";
 	HashSet<Vector3> dontDupe = new HashSet<Vector3>();
 	float x = 0;
 	float y = 0;
 	float z = 0;
-	Queue<string> chunkQueue = new Queue<string>();
+	Queue<string> toRenderChunkQueue = new Queue<string>();
+	Queue<GameObject> beenRenderedChunkQueue = new Queue<GameObject>();
+	bool permanent = false;
+	Vector3 camGoTo;
 
 	void Start () {
-		StartCoroutine(generateLStringDeterministic(Grammars.levycurve, 20, "a"));
+		StartCoroutine(generateLStringDeterministic(Grammars.juliaSetish, 30, "a"));
 		StartCoroutine(chunkFactory());
+	}
+
+	void Update(){
+		if(!permanent){
+			if(beenRenderedChunkQueue.Count > maxChunks){
+				Destroy(beenRenderedChunkQueue.Dequeue());
+			}
+
+			Vector3 pos = camGoTo;
+			pos.y = Camera.main.transform.position.y;
+			Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, pos, Time.deltaTime);
+		}
 	}
 	
 	/*
@@ -58,14 +74,14 @@ public class FractalGen : MonoBehaviour {
 			if(n == iterations && stringStack.Count == 0){
 				//send chunk to the queue for production.
 				//yield so we can take a moment to build the chunk
-				chunkQueue.Enqueue(part);
+				toRenderChunkQueue.Enqueue(part);
 				yield return null;
 				//break;
 			//if on last iteration but things are on the stack, we have more
 			}else if(n == iterations && stringStack.Count != 0){
 				//send chunk to the queue for production.
 				//yield so we can take a moment to build the chunk
-				chunkQueue.Enqueue(part);
+				toRenderChunkQueue.Enqueue(part);
 				yield return null;
 
 				//if next item on stack is on this level of iteration, it
@@ -79,7 +95,7 @@ public class FractalGen : MonoBehaviour {
 
 					//send chunk to the queue for production.
 					//yield so we can take a moment to build the chunk
-					chunkQueue.Enqueue(part);
+					toRenderChunkQueue.Enqueue(part);
 					yield return null;
 				}
 
@@ -110,8 +126,8 @@ public class FractalGen : MonoBehaviour {
 	 */
 	IEnumerator chunkFactory(){
 		while(true){
-			if(chunkQueue.Count != 0){
-				StartCoroutine(makeChunk(chunkQueue.Dequeue()));
+			if(toRenderChunkQueue.Count != 0){
+				StartCoroutine(makeChunk(toRenderChunkQueue.Dequeue()));
 			}
 			yield return null;
 		}
@@ -145,10 +161,15 @@ public class FractalGen : MonoBehaviour {
 					break;
 			}
 
-			if(dontDupe.Add(new Vector3(x, y, z))){
+			if(permanent){
+				if(dontDupe.Add(new Vector3(x, y, z))){
+					finals.Add(new Vector3(x, y, z));
+				}
+			}else{
 				finals.Add(new Vector3(x, y, z));
 			}
 		}
+		camGoTo = finals[0];
 
 		List<Vector3> nextChunkVecs = new List<Vector3>();
 		int q = 0;
@@ -220,6 +241,8 @@ public class FractalGen : MonoBehaviour {
 		for(int h = 0; h < chunkChildCount; h++) {
 			Destroy(newChunk.transform.GetChild(h).gameObject);
 		}
+		if(!permanent)
+			beenRenderedChunkQueue.Enqueue(newChunk);
 
 		yield return null;
 	}
