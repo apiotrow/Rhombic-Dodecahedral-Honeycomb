@@ -17,11 +17,11 @@ public class FractalGen : MonoBehaviour {
 	float z = 0;
 	Queue<string> toRenderChunkQueue = new Queue<string>();
 	Queue<GameObject> beenRenderedChunkQueue = new Queue<GameObject>();
-	bool permanent = false;
+	bool permanent = true;
 	Vector3 camGoTo;
 
 	void Start () {
-		StartCoroutine(generateLStringDeterministic(Grammars.juliaSetish, 30, "a"));
+		StartCoroutine(generateLStringDeterministic(Grammars.levycurve, 30, "a"));
 		StartCoroutine(chunkFactory());
 	}
 
@@ -30,11 +30,11 @@ public class FractalGen : MonoBehaviour {
 			if(beenRenderedChunkQueue.Count > maxChunks){
 				Destroy(beenRenderedChunkQueue.Dequeue());
 			}
-
-			Vector3 pos = camGoTo;
-			pos.y = Camera.main.transform.position.y;
-			Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, pos, Time.deltaTime);
 		}
+
+		Vector3 pos = camGoTo;
+		pos.y = Camera.main.transform.position.y;
+		Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, pos, Time.deltaTime);
 	}
 	
 	/*
@@ -127,16 +127,17 @@ public class FractalGen : MonoBehaviour {
 	IEnumerator chunkFactory(){
 		while(true){
 			if(toRenderChunkQueue.Count != 0){
-				StartCoroutine(makeChunk(toRenderChunkQueue.Dequeue()));
+				makeChunk(toRenderChunkQueue.Dequeue());
 			}
 			yield return null;
 		}
 	}
 
 	/*
+	 * --> IEnumerator chunkFactory
 	 * Make a chunk of size chunkSize
 	 */
-	IEnumerator makeChunk(string LString){
+	void makeChunk(string LString){
 		List<Vector3> finals = new List<Vector3>();
 		float increment = 1f;
 		foreach(char c in LString){
@@ -178,15 +179,13 @@ public class FractalGen : MonoBehaviour {
 			q++;
 			
 			if(q == chunkSize){
-				StartCoroutine(makeChunkParts(nextChunkVecs));
+				makeChunkParts(nextChunkVecs);
 				nextChunkVecs.Clear();
 				q = 0;
 			}else if(i == finals.Count - 1){
-				StartCoroutine(makeChunkParts(nextChunkVecs));
+				makeChunkParts(nextChunkVecs);
 			}
 		}
-
-		yield return null;
 	}
 
 	/*
@@ -194,7 +193,7 @@ public class FractalGen : MonoBehaviour {
 	 * Make a single game object whose mesh is a combination of multiple
 	 * smaller meshes
 	 */
-	IEnumerator makeChunkParts(List<Vector3> chunkVecs){
+	void makeChunkParts(List<Vector3> chunkVecs){
 		//instantiate a new chunk
 		GameObject newChunk = GameObject.Instantiate(Resources.Load("Prefabs/Fractal/Chunk")) as GameObject;
 		newChunk.transform.SetParent(GameObject.Find("Chunks").transform);
@@ -208,14 +207,14 @@ public class FractalGen : MonoBehaviour {
 		}
 
 		//now combine all their meshes
-		yield return StartCoroutine(combineMeshes(newChunk));
+		combineMeshes(newChunk);
 	}
 
 	/*
 	 * -->IEnumerator makeChunkParts
 	 * Combines meshes of the children of passed in GameObject
 	 */
-	IEnumerator combineMeshes(GameObject newChunk){
+	void combineMeshes(GameObject newChunk){
 		//combine the meshes of the children of the chunk
 		MeshFilter[] meshFilters = newChunk.transform.GetComponentsInChildren<MeshFilter>();
 		CombineInstance[] combine = new CombineInstance[meshFilters.Length];
@@ -244,6 +243,6 @@ public class FractalGen : MonoBehaviour {
 		if(!permanent)
 			beenRenderedChunkQueue.Enqueue(newChunk);
 
-		yield return null;
+//		yield return null;
 	}
 }
