@@ -3,38 +3,56 @@ using System.Collections;
 using System.Collections.Generic; 
 using System.Text;
 
+/*
+ * Generates a fractal made of tiles using an L-system
+ */
 public class FractalGen : MonoBehaviour {
 	//the smaller the chunk size is, the higher framerate is when building.
 	//however, small chunks make the bug where the last chunk won't render
 	//more pronounced.
-	int chunkSize = 50;
+	int maxChunkSize = 50;
 	int maxChunks = 100;
 	bool addingCollider = false;
+	bool permanent = true;
 	string constructionBit = "marker";
+
 	HashSet<Vector3> dontDupe = new HashSet<Vector3>();
 	float x = 0;
 	float y = 0;
 	float z = 0;
 	Queue<string> toRenderChunkQueue = new Queue<string>();
 	Queue<GameObject> beenRenderedChunkQueue = new Queue<GameObject>();
-	bool permanent = true;
 	Vector3 camGoTo;
 
 	void Start () {
-		StartCoroutine(generateLStringDeterministic(Grammars.levycurve, 30, "a"));
+		StartCoroutine(generateLStringDeterministic(Grammars.juliaSetish, 25, "a"));
 		StartCoroutine(chunkFactory());
+		StartCoroutine(cameraFollow());
 	}
 
 	void Update(){
 		if(!permanent){
-			if(beenRenderedChunkQueue.Count > maxChunks){
-				Destroy(beenRenderedChunkQueue.Dequeue());
-			}
+			destroyOldChunks();
 		}
+	}
 
-		Vector3 pos = camGoTo;
-		pos.y = Camera.main.transform.position.y;
-		Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, pos, Time.deltaTime);
+	/*
+	 * Destroy trailing chunks
+	 */
+	void destroyOldChunks(){
+		if(beenRenderedChunkQueue.Count > maxChunks){
+			Destroy(beenRenderedChunkQueue.Dequeue());
+		}
+	}
+
+	/*
+	 * Lerp camera to the x and z of point of focus
+	 */
+	IEnumerator cameraFollow(){
+		while(Camera.main.transform.position != camGoTo){
+			Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, camGoTo, Time.deltaTime);
+			yield return null;
+		}
 	}
 	
 	/*
@@ -62,7 +80,8 @@ public class FractalGen : MonoBehaviour {
 
 			//continually halve the new string until its under our size limit.
 			//push remainders to the stack.
-			while(part.Length > chunkSize){
+			while(part.Length > maxChunkSize){
+
 				//push second half of string to stack with iteration level at front
 				stringStack.Push(n.ToString() + ":" + part.Substring((int)Mathf.Floor(part.Length / 2)));
 				
@@ -72,30 +91,36 @@ public class FractalGen : MonoBehaviour {
 
 			//if on last iteration and nothing is on the stack, we're on last segment
 			if(n == iterations && stringStack.Count == 0){
+
 				//send chunk to the queue for production.
-				//yield so we can take a moment to build the chunk
 				toRenderChunkQueue.Enqueue(part);
+
+				//yield so chunk can be built
 				yield return null;
-				//break;
+
 			//if on last iteration but things are on the stack, we have more
 			}else if(n == iterations && stringStack.Count != 0){
+
 				//send chunk to the queue for production.
-				//yield so we can take a moment to build the chunk
 				toRenderChunkQueue.Enqueue(part);
+
+				//yield so chunk can be built
 				yield return null;
 
 				//if next item on stack is on this level of iteration, it
 				//must be same length or less, so we can chunk it without halving
 				if(stringStack.Count != 0 && stringStack.Peek().Contains(iterations.ToString())){
+
 					//pop next segment
 					part = stringStack.Pop();
 
-					//remove iteration level from string
+					//remove iteration level
 					part = part.Substring(part.IndexOf(":") + 1);
 
-					//send chunk to the queue for production.
-					//yield so we can take a moment to build the chunk
+					//send chunk to the queue for production
 					toRenderChunkQueue.Enqueue(part);
+
+					//yield so chunk can be built
 					yield return null;
 				}
 
@@ -105,6 +130,7 @@ public class FractalGen : MonoBehaviour {
 
 				//if not, get part ready for next iteration
 				}else{
+
 					//pop next segment
 					part = stringStack.Pop();
 					
@@ -116,7 +142,6 @@ public class FractalGen : MonoBehaviour {
 				}
 			}
 		}
-
 		yield return null;
 	}
 	
@@ -132,12 +157,26 @@ public class FractalGen : MonoBehaviour {
 			yield return null;
 		}
 	}
-
+	
 	/*
 	 * --> IEnumerator chunkFactory
-	 * Make a chunk of size chunkSize
+	 * Makes a chunk of size chunkSize.
 	 */
 	void makeChunk(string LString){
+		List<List<Vector3>> allNextChunkVecs = 
+			divideTilePositionsIntoChunks(createTilePositions(LString));
+
+		for(int i = 0; i < allNextChunkVecs.Count; i++){
+			combineTileMeshes(createTiles(allNextChunkVecs[i]));
+		}
+	}
+
+	/*
+	 * --> void makeChunk
+	 * Applies rules to create positions for fractal.
+	 * Doesn't allow duplicate positions.
+	 */
+	List<Vector3> createTilePositions(string LString){
 		List<Vector3> finals = new List<Vector3>();
 		float increment = 1f;
 		foreach(char c in LString){
@@ -161,7 +200,7 @@ public class FractalGen : MonoBehaviour {
 					z -= increment;
 					break;
 			}
-
+			
 			if(permanent){
 				if(dontDupe.Add(new Vector3(x, y, z))){
 					finals.Add(new Vector3(x, y, z));
@@ -170,22 +209,34 @@ public class FractalGen : MonoBehaviour {
 				finals.Add(new Vector3(x, y, z));
 			}
 		}
-		camGoTo = finals[0];
+		if(finals.Count != 0)
+			createNewCamPos(finals[0]);
 
+		return finals;
+	}
+
+	/*
+	 * --> void makeChunk
+	 * Separates the list of tile positions to ensure no chunk exceeds
+	 * max chunk size.
+	 */
+	List<List<Vector3>> divideTilePositionsIntoChunks(List<Vector3> finals){
+		List<List<Vector3>> allNextChunksVecs = new List<List<Vector3>>();
 		List<Vector3> nextChunkVecs = new List<Vector3>();
 		int q = 0;
 		for(int i = 0; i < finals.Count; i++){
 			nextChunkVecs.Add(finals[i]);
 			q++;
 			
-			if(q == chunkSize){
-				makeChunkParts(nextChunkVecs);
+			if(q == maxChunkSize){
+				allNextChunksVecs.Add(nextChunkVecs);
 				nextChunkVecs.Clear();
 				q = 0;
 			}else if(i == finals.Count - 1){
-				makeChunkParts(nextChunkVecs);
+				allNextChunksVecs.Add(nextChunkVecs);
 			}
 		}
+		return allNextChunksVecs;
 	}
 
 	/*
@@ -193,7 +244,7 @@ public class FractalGen : MonoBehaviour {
 	 * Make a single game object whose mesh is a combination of multiple
 	 * smaller meshes
 	 */
-	void makeChunkParts(List<Vector3> chunkVecs){
+	GameObject createTiles(List<Vector3> chunkVecs){
 		//instantiate a new chunk
 		GameObject newChunk = GameObject.Instantiate(Resources.Load("Prefabs/Fractal/Chunk")) as GameObject;
 		newChunk.transform.SetParent(GameObject.Find("Chunks").transform);
@@ -201,20 +252,19 @@ public class FractalGen : MonoBehaviour {
 		//instantiate chunk parts and parent them to the new chunk
 		foreach(Vector3 vec in chunkVecs){
 			GameObject g =
-				GameObject.Instantiate(Resources.Load("Prefabs/Fractal/" + constructionBit), vec, Quaternion.Euler(new Vector3(90f, 0f, 0f))) as GameObject;
+				GameObject.Instantiate(Resources.Load("Prefabs/Fractal/" + constructionBit), 
+				                       vec, 
+				                       Quaternion.Euler(new Vector3(90f, 0f, 0f))) as GameObject;
 			g.transform.SetParent(newChunk.gameObject.transform);
-//			yield return null; //makes trippy effect
 		}
-
-		//now combine all their meshes
-		combineMeshes(newChunk);
+		return newChunk;
 	}
 
 	/*
 	 * -->IEnumerator makeChunkParts
 	 * Combines meshes of the children of passed in GameObject
 	 */
-	void combineMeshes(GameObject newChunk){
+	void combineTileMeshes(GameObject newChunk){
 		//combine the meshes of the children of the chunk
 		MeshFilter[] meshFilters = newChunk.transform.GetComponentsInChildren<MeshFilter>();
 		CombineInstance[] combine = new CombineInstance[meshFilters.Length];
@@ -242,7 +292,14 @@ public class FractalGen : MonoBehaviour {
 		}
 		if(!permanent)
 			beenRenderedChunkQueue.Enqueue(newChunk);
+	}
 
-//		yield return null;
+	
+	/*
+	 * Make position for camera
+	 */
+	void createNewCamPos(Vector3 lookAt){
+		camGoTo = lookAt;
+		camGoTo.y = Camera.main.transform.position.y;
 	}
 }
