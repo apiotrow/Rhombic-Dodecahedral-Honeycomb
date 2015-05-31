@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections; 
 using System.Collections.Generic; 
-using System.Text;
 
 /*
  * Generates a fractal made of tiles using an L-system
@@ -31,7 +30,6 @@ public class FractalGen : MonoBehaviour {
 	}
 
 	#region L-System
-
 	/*
 	 * Generate an L string using specified rules.
 	 */
@@ -95,11 +93,9 @@ public class FractalGen : MonoBehaviour {
 		}
 		yield return null;
 	}
-
 	#endregion L-System
 
 	#region Chunk
-	
 	/*
 	 * Waits for L string segments to arrive in the chunk queue
 	 * and generates them.
@@ -126,7 +122,6 @@ public class FractalGen : MonoBehaviour {
 	}
 
 	/*
-	 * --> IEnumerator chunkFactory
 	 * Makes a chunk of size chunkSize.
 	 */
 	void makeChunk(string LString){
@@ -139,7 +134,6 @@ public class FractalGen : MonoBehaviour {
 	}
 
 	/*
-	 * --> void makeChunk
 	 * Applies rules to create positions for fractal.
 	 * Doesn't allow duplicate positions.
 	 */
@@ -186,7 +180,6 @@ public class FractalGen : MonoBehaviour {
 	}
 
 	/*
-	 * --> void makeChunk
 	 * Separates the list of tile positions to ensure no chunk exceeds
 	 * max chunk size.
 	 */
@@ -210,7 +203,6 @@ public class FractalGen : MonoBehaviour {
 	}
 
 	/*
-	 * -->void makeChunk
 	 * Make a single game object whose mesh is a combination of multiple
 	 * smaller meshes
 	 */
@@ -229,7 +221,6 @@ public class FractalGen : MonoBehaviour {
 	}
 
 	/*
-	 * -->void makeChunk
 	 * Combines meshes of the children of passed in GameObject
 	 */
 	void combineTileMeshes(GameObject newChunk){
