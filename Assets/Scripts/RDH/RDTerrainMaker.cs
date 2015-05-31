@@ -117,6 +117,4 @@ public class RDTerrainMaker : MonoBehaviour {
 		GameObject newRD = GameObject.Instantiate(Resources.Load("Prefabs/" + prefab), pos, Quaternion.identity) as GameObject;
 		newRD.transform.SetParent(this.gameObject.transform);
 	}
-
-
 }
