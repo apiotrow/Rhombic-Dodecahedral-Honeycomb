@@ -7,8 +7,8 @@ using System.Collections.Generic;
  */
 public class FractalGen : MonoBehaviour {
 	int maxChunkSize = 100; //smaller chunks lead to higher framerates
-	bool permanent = false; //do old chunks get destroyed?
-	int maxChunks = 20; //if so, max length of strip
+	bool permanent = false; //do old chunks stay put or get destroyed?
+	int maxChunks = 100; //if so, max length of strip
 	bool addingCollider = false; //do we want to be able to walk on it?
 	string constructionBit = "marker"; //prefab fractal is composed of
 
@@ -21,7 +21,7 @@ public class FractalGen : MonoBehaviour {
 	Vector3 camGoTo;
 
 	void Start() {
-		StartCoroutine(generateLStringDeterministic(Grammars.levycurve, 25, "a"));
+		StartCoroutine(generateLStringDeterministic(Grammars.rhombus, 15, "ac"));
 		StartCoroutine(chunkFactory());
 		StartCoroutine(cameraFollow());
 		if(!permanent){

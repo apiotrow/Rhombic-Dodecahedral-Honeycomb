@@ -10,11 +10,11 @@ public class RDTerrainMaker : MonoBehaviour {
 
 	void Start () {
 
-		generateRDPlaneAtY(1, 1);
+		generateRDPlaneAtY(-1, 50);
 
-//		for(int a = 0; a < 10; a++){
-//			generateRDPlaneAtY(a, 20 - (a * 2));
-//		}
+		for(int a = 0; a < 10; a++){
+			generateRDPlaneAtY(a, 20 - (a * 2));
+		}
 
 		deleteHiddenFaces();
 
