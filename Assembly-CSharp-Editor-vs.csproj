@@ -46,15 +46,15 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
-     <None Include="Assets\Resources\Shaders\ToonBasic.shader" />
-     <None Include="Assets\Resources\Shaders\ToonBasicOutline.shader" />
-     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
-     <None Include="Assets\Resources\Shaders\ToonLitOutline.shader" />
-     <None Include="Assets\Resources\Shaders\ToonLit.shader" />
-     <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
-     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
-     <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
+     <Compile Include="assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
+     <None Include="assets\Resources\Shaders\ToonBasic.shader" />
+     <None Include="assets\Resources\Shaders\ToonBasicOutline.shader" />
+     <None Include="assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+     <None Include="assets\Resources\Shaders\ToonLitOutline.shader" />
+     <None Include="assets\Resources\Shaders\ToonLit.shader" />
+     <None Include="assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
+     <None Include="assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
+     <None Include="assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

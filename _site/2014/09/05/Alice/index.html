@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Alice &middot; Aaron Piotrowski
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+    
+    <link rel="stylesheet" href="/highlight/styles/monokai_sublime.css">
+    <script src="/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p></p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">Contact</a>
+        
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+      <a class="sidebar-nav-item" href="https://github.com/apiotrow/">My GitHub</a>
+      
+      <a class="sidebar-nav-item" href="http://www.linkedin.com/pub/aaron-piotrowski/a7/142/a4a/">My LinkedIn</a>
+
+
+
+    <a class="sidebar-nav-item" href="https://github.com/poole/lanyon">Lanyon Jekyll Theme</a>
+    <span class="sidebar-nav-item">Currently v1.0.0</span>
+  </nav>
+
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2014. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">Aaron Piotrowski</a>
+            <small>Programming</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">Alice</h1>
+  <span class="post-date">05 Sep 2014</span>
+  <p>Decided to work on the cel-shaded Alice adventure, rather than the gravity game. Made quite a bit of progress.</p>
+
+<p><a href="https://rawgit.com/apiotrow/Alice/master/Assets/Executables/Alice1.1/Alice1.1.html"><img src="/assets/2014-09-05/screens1tall.png"></a></p>
+
+<p>The core mechanic is the changing of the size of the player&#39;s character. I thought it had the potential to become a puzzle game. Something where you need to manage your size changes to overcome certain obstacles, or reach certain items. There&#39;s a level in Mario 64 that uses this.</p>
+
+<p>Currently, there&#39;s two ways for Alice&#39;s size to change. You can manually do it with the 1 and 2 keys or with the mouse scroll wheel, or have be done automatically by way of an object I created that, as you near it, causes your size to diminish. As you can see above, the level begins with Alice in front of a cave that can easily be walked through while she&#39;s tiny. By the time she exits, though, she&#39;s grown to a point where she can&#39;t fit in the cave anymore. After walking a little futher, she dwarfs the entire plot of terrain she started in. There&#39;s a bit of an optical illusion with the size changing, where sometimes it seems like you&#39;re really far from an area, when in actuality you&#39;re just much larger than it.</p>
+
+<p><a href="https://rawgit.com/apiotrow/Alice/master/Assets/Executables/Alice1.1/Alice1.1.html"><img src="/assets/2014-09-05/screens2tall.png"></a></p>
+
+<p>As you can see, there&#39;s a floating planet type thing at the peak of the level. I took short digression in the middle of this project to try and implement spherical gravity, so you can run around a planet. I modeled a planet in Sculptris, and successfully got the player oriented properly on the planet&#39;s surface, but soon realized that the stock 3rd person character controller in Unity is much more complicated than just having the player&#39;s capsule collider slide along a surface. Making a spherical character controller would be quite an undertaking for me, so I decided to save it for another day. Ended up keeping the planet, though.</p>
+
+<p>I always noticed that one of the benefits of coding alone is that you can keep your code clean. I decided to put this into practice early on. I actually used functions in this project. I feel like such an adult.</p>
+
+<pre><code class="cs">
+using UnityEngine;
+using System.Collections;
+
+public class AliceController : MonoBehaviour
+{
+    public AlicePlanet alicePlanet;
+    public Transform makeSmallerObject;
+
+    public MouseOrbitImproved cam;
+    public ThirdPersonControllerCS playercont;
+    float lerpTime;
+
+    public float camDistChangeMultiplier;
+
+    float scaleChange;
+    float newScale;
+    float currentScale;
+    float scaleChangeSpeed;
+
+    float oldCamDistance;
+    float camDistanceChangeSpeed;
+
+    float minScale;
+    float maxScale;
+
+    float walkSpeedMultiplier;
+    float runSpeedMultiplier;
+    float jumpHeightMultiplier;
+    float inAirControlAccelerationMultiplier;
+    float gravityMultiplier;
+    float fogEndDistanceMultiplier;
+
+    bool manualSizeChanging;
+
+    void OnGUI(){
+        string text;
+        text = "Manual Size Changing: " + manualSizeChanging;
+        GUI.Box (new Rect (Screen.width - 200, 0, 200, 30), text);
+    }
+
+
+    void Start ()
+    {
+
+        cam = Camera.main.GetComponent<MouseOrbitImproved> ();
+        playercont = gameObject.GetComponent<ThirdPersonControllerCS> ();
+        lerpTime = 20f;
+
+        camDistChangeMultiplier = 5f;
+
+        maxScale = 2000f;
+        minScale = 1f;
+
+        scaleChange = 0f;
+        newScale = 1f;
+        currentScale = 1f;
+
+        walkSpeedMultiplier = 2f;
+        runSpeedMultiplier = 4f;
+        jumpHeightMultiplier = 4f;
+        inAirControlAccelerationMultiplier = 2f;
+        fogEndDistanceMultiplier = 10f;
+        gravityMultiplier = 20f;
+
+        newScale = currentScale;
+
+        transform.localScale = new Vector3 (minScale, minScale, minScale);
+        
+        cam.distance = minScale * camDistChangeMultiplier;
+        
+        playercont.walkSpeed = minScale * walkSpeedMultiplier;
+        playercont.runSpeed = minScale * runSpeedMultiplier;
+        playercont.jumpHeight = minScale * jumpHeightMultiplier;
+        playercont.inAirControlAcceleration = minScale * inAirControlAccelerationMultiplier;
+        playercont.gravity = minScale * gravityMultiplier;
+
+        RenderSettings.fog = false;
+        RenderSettings.fogEndDistance = minScale * fogEndDistanceMultiplier;
+
+        manualSizeChanging = false;
+    }
+
+
+
+    void Update ()
+    {
+        if (Input.GetKeyDown (KeyCode.R)) {
+            Application.LoadLevel (0); 
+        }
+
+        if(Input.GetKeyDown(KeyCode.T)){
+            manualSizeChanging = !manualSizeChanging;
+        }
+
+        handleSizeChange();
+
+        if (transform.localScale.x >= maxScale) {
+            setValues(maxScale);
+        }
+        if (transform.localScale.x <= minScale) {
+            setValues(minScale);
+        }
+    }
+
+    void setValues(float scale){
+        transform.localScale = new Vector3 (scale, scale, scale);
+
+        camDistanceChangeSpeed = Time.deltaTime * Mathf.Abs ((scale * camDistChangeMultiplier) - cam.distance);
+        cam.distance = Mathf.MoveTowards (cam.distance, scale * camDistChangeMultiplier, camDistanceChangeSpeed);
+
+        playercont.walkSpeed = scale * walkSpeedMultiplier;
+        playercont.runSpeed = scale * runSpeedMultiplier;
+        playercont.jumpHeight = scale * jumpHeightMultiplier;
+        playercont.inAirControlAcceleration = scale * inAirControlAccelerationMultiplier;
+        playercont.gravity = scale * gravityMultiplier;
+
+        RenderSettings.fogEndDistance = scale * fogEndDistanceMultiplier;
+    }
+
+    void sizeChangeByInput(){
+        if(Input.GetKeyDown(KeyCode.Alpha2)/* || Input.GetMouseButtonDown(1)*/){
+            if(newScale > minScale)
+                newScale = newScale / 2f;
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha1) /*|| Input.GetMouseButtonDown(0)*/){
+            if(newScale < maxScale)
+                newScale = newScale * 2f;
+        }
+
+        if (Input.GetAxis ("Mouse ScrollWheel") != 0) {
+            scaleChange = -Input.GetAxis ("Mouse ScrollWheel");
+
+            newScale = transform.localScale.x + (scaleChange * 5f);
+        }
+    }
+
+    void sizeChangeByDistanceToObject(Transform obj, float multiplier){
+        float distToObject;
+        distToObject = Vector3.Distance (obj.position, transform.position);
+        newScale = distToObject * multiplier;
+    }
+
+
+    void handleSizeChange(){
+        if (!manualSizeChanging) {
+            sizeChangeByDistanceToObject (makeSmallerObject, 0.1f);
+        } else {
+            sizeChangeByInput ();
+        }
+
+        scaleChangeSpeed = Time.deltaTime * Mathf.Abs (newScale - transform.localScale.x);
+        currentScale = Mathf.MoveTowards (transform.localScale.x, newScale, scaleChangeSpeed);                 
+        setValues(currentScale);
+    }
+    
+    void applySphericalGravity(){
+        transform.up = -(alicePlanet.transform.position - transform.position);
+        Debug.DrawRay (transform.position, transform.up, Color.green, 5f);
+        rigidbody.AddForce (-transform.up * 30f);
+        
+        if(Input.GetKey(KeyCode.W)){
+            rigidbody.AddForce(transform.forward * 10f);
+        }
+        if(Input.GetKey(KeyCode.Space)){
+            rigidbody.AddForce(transform.up * 50f);
+        }
+    }
+}
+</code></pre>
+
+<p>To enact the size change, I change the newScale variable, then change all the player&#39;s other attributes according to that. Attributes like jump height, run speed, air acceleration, etc. Each one has it&#39;s own multipler, since some of the attributes need to be throttled as Alice grows. If everything grew by the same proportion, we&#39;d run into issues with her moving too fast as a giant and being difficult to control. I got a bit more experience with lerping. Well, not actual lerping. I gave up on Mathf.Lerp after an hour or so and switched to a more user-friendly Mathf function, much like I continually give up on quaternions in favor of euler angles. <a href="http://docs.unity3d.com/ScriptReference/Mathf.MoveTowards.html">Mathf.MoveTowards</a> is my new best friend. Still, I definitely need to patch up this weak point I have with certain math concepts. I&#39;ve successfully evaded inverse trig functions and anything involving complex numbers for most of my programming career, but I know I&#39;ll have to face them one day.</p>
+
+<p>One thing to come of this project is my having found a workaround for an annoying limitation with Unity&#39;s built-in terrain system. You can&#39;t make caves in Unity. Nothing can be overhanging. However, by creating prefabs in Sculptris and incorporating them into my terrain, I was able to make caves and other overhanging things. It was relatively painless creating the models and having them blend well with the terrain. They are pretty fucking ugly models, though, on account of my inability to create any kind of graphic art that a 2-year-old smashing a keyboard and slobbering on the screen couldn&#39;t duplicate, but I&#39;ve come to expect this of myself and am completely at peace with it.</p>
+
+<p>Most of all, I dealt with shaders, textures, shadows, and lighting. Shadows can be a bit of a pain in Unity. I&#39;m sure I only utilize about 5% of their potential. I spent a lot of time tweaking quality settings, directional light properties, and shadow attributes, in order to get even crappy shadows to work and not bug out. Getting the textures and colors I wanted with the terrain was just a lot of trial and error. I didn&#39;t even bother to google it. Sometimes I prefer to just fuck around with things until they work. It&#39;s partly arrogance, but also because I&#39;ve noticed that my greatest discoveries from recklessly adjusting things. <a href="http://docs.unity3d.com/ScriptReference/Light-cookie.html">Light cookies</a> are one thing I found purely through messing with stuff. They can be used for a lot of cheap tricks, like making it appear as thought dust is blowing across the ground, or by making terrain look textured when it&#39;s completely smooth.</p>
+
+<p>I also dabbled a bit in performance. My goal in life is to make programs that run smoothly. For me, performance comes before graphics, every time. I was pleasantly surpised by a particular feature of terrain I found, called <a href="http://docs.unity3d.com/ScriptReference/Terrain-heightmapPixelError.html">Pixel Error</a>. One of my terrains was getting so detailed that it was dropping my framerate to annoyingly low levels. I found this stupid pixel error slider, slid it all the way to the right, saw my terrain become lower quality, then played the game and saw my framerates increase from 20-ish up to the 70-80 range. It does cause the terrain to dance a little bit as the polygons are continually popping into existence and committing suicide based on the camera&#39;s distance from them, but it&#39;s a small price to pay for a smooth game.</p>
+
+<p>I did import a couple of large asset bundles in the earlier part of this project, when I was still figuring out what to put the player through. One was a nature pack. The demo scenes ran uncomfortably slow on my 2010 MacBook Pro, so I wrote that one off. I also tried a low-poly urban asset package. Plenty of buildings for her to knock over. Everything ran somewhat smoothly as well. I got excited when I saw one of their demo scenes:</p>
+
+<p><img src="/assets/2014-09-05/screen3.png"></p>
+
+<p>Stupid me. Thought maybe they had spherical gravity implemented, and I could just steal it. Turns out no. It&#39;s just a globe with buildings. But then I thought maybe they had some super secret way of wrapping things around the face of a sphere. Wrong again. They either hand-crafted those building to sit on the sphere like that, or they did some kind of wrapping in a 3D modeling program and imported them as a unit. Out of anger, hurt, and resentment, I started the planet thing I described above. And look how fucking well that turned out. Thanks a lot, Unity Asset Store. Guess I&#39;ll just do everything my god damned self.</p>
+
+<p>I did notice the bloom and lens flares, depth of field, and antialiasing on the main camera in that scene, though, which gives it that cool blur effect. I think I&#39;m going to mess with that next. I&#39;m getting kind of tired of Alice anyway. She was fun for a while, but we&#39;ve been moving in different directions lately. Plus she has a bad habit of falling through the terrain when her capsule collider increases in size and clips through the mesh. It was cute the first few times, but it wore thin pretty fucking quickly.</p>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2014/11/09/Got-That-Greenlight/">
+            I got greenlit?
+            <small>09 Nov 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2014/10/21/Game-Pitch-%231/">
+            Game Pitch
+            <small>21 Oct 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2014/10/04/Floppy%20Man/">
+            Floppy Man
+            <small>04 Oct 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>

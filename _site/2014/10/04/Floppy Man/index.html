@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Floppy Man &middot; Aaron Piotrowski
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+    
+    <link rel="stylesheet" href="/highlight/styles/monokai_sublime.css">
+    <script src="/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p></p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">Contact</a>
+        
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+      <a class="sidebar-nav-item" href="https://github.com/apiotrow/">My GitHub</a>
+      
+      <a class="sidebar-nav-item" href="http://www.linkedin.com/pub/aaron-piotrowski/a7/142/a4a/">My LinkedIn</a>
+
+
+
+    <a class="sidebar-nav-item" href="https://github.com/poole/lanyon">Lanyon Jekyll Theme</a>
+    <span class="sidebar-nav-item">Currently v1.0.0</span>
+  </nav>
+
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2014. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">Aaron Piotrowski</a>
+            <small>Programming</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">Floppy Man</h1>
+  <span class="post-date">04 Oct 2014</span>
+  <p>To know how proud I am of myself, you only need to look at this screenshot:</p>
+
+<p><a href="https://rawgit.com/apiotrow/UnityExperiments/master/ropes/ropes1.0/ropes1.0.html"><img src="/assets/2014-10-04/01.png"></a></p>
+
+<p>I attempted to create a creature that would keep itself erect by placing its feet in the right place as its weight shifted around. I was inspired by this video:</p>
+
+<p><center>
+<iframe width="560" height="315" src="//www.youtube.com/embed/Qi5adyccoKI" frameborder="0" allowfullscreen></iframe>
+</center> </p>
+
+<p>The level of realism there is astonishing to me. I decided to try to recreate those effects from scratch, starting with just trying making a humanoid keep iself from falling over by shifting it&#39;s feet around when the center of gravity moves. I&#39;m not sure when I stopped that, but I think it was around the time I randomly stumbled into <a href="http://pastebin.com/j3DWqe3R">DragRigidBody</a>, a script that allows you to drag items in a scene using the mouse. My project quickly devolved from procedural generation into flinging things around.</p>
+
+<p>I imported some rope-like things I created in a previous project, which use <a href="http://docs.unity3d.com/Manual/class-ConfigurableJoint.html">Configurable Joints</a> to connect with each other in a chain. I think these are generally used for limbs, signs, doors, and other swinging things. Once I got the rope thing working though, I&#39;ve been obsessed with it. It&#39;s incredibly versatile, usable for anything from wrecking balls to horse-lifting:</p>
+
+<p><img src="/assets/2014-10-04/02.png">
+<img src="/assets/2014-10-04/03.png"></p>
+
+<p>I&#39;ll probably throw it up on the Unity asset store eventually. I can&#39;t deny the masses something as ingenious and clearly error-free as this.</p>
+
+<p>I also recently found out that porting Unity projects to Android is fairly painless. Floppy Man didn&#39;t even require implementing a control scheme for touch-screen. Alice did, however. I had to find a mobile joystick/button tool to make that game playable. I spent about 2 hours in vain trying to get it to play well with Unity&#39;s character controller. It ended up looking like it wasn&#39;t worth the effort, though, and that making your own controller specifically for the GUI joysticks would be the only option. Still, it looked powerful, so it&#39;s something I&#39;ll probably experiment with more in the future:</p>
+
+<p><center><img src="/assets/2014-10-04/05.jpg"></center></p>
+
+<p>Then again, I&#39;m being ever so slightly encouraged by a professor of mine to move away from Unity, and into a more C++-based environment. I&#39;ve resisted as long as I could, due to the lack of any decent C++-based game engine or game-oriented libraries out there, but my will is weakening. I may begin using SFML soon, hardcoding games for 2 weeks that will be on par with a game that could be made in GameMaker in 2 days. But it&#39;s all about street cred, right? Knowing those pointers, those templates, those type declarations, those mallocs, and that polymorphism.</p>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2014/11/09/Got-That-Greenlight/">
+            I got greenlit?
+            <small>09 Nov 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2014/10/21/Game-Pitch-%231/">
+            Game Pitch
+            <small>21 Oct 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2014/09/15/LeftRightBrain/">
+            Brain Hemispheres
+            <small>15 Sep 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>

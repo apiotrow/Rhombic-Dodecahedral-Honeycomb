@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Gravity 1.2 &middot; Aaron Piotrowski
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+    
+    <link rel="stylesheet" href="/highlight/styles/monokai_sublime.css">
+    <script src="/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p></p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">Contact</a>
+        
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+      <a class="sidebar-nav-item" href="https://github.com/apiotrow/">My GitHub</a>
+      
+      <a class="sidebar-nav-item" href="http://www.linkedin.com/pub/aaron-piotrowski/a7/142/a4a/">My LinkedIn</a>
+
+
+
+    <a class="sidebar-nav-item" href="https://github.com/poole/lanyon">Lanyon Jekyll Theme</a>
+    <span class="sidebar-nav-item">Currently v1.0.0</span>
+  </nav>
+
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2014. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">Aaron Piotrowski</a>
+            <small>Programming</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">Gravity 1.2</h1>
+  <span class="post-date">22 Aug 2014</span>
+  <p>Added a lot to my gravity project. Several GUI elements that allow you to tweak the parameters. Changed the trails to have black borders, so you can see which is behind the other. Also made the trails various neon colors. Unity doesn&#39;t have any functions to create colors from HSV. They only have RGB. Sucks, because randomized RGB values tend to be dull tones. To get some bright colors, I used a couple of HSV functions I found in <a href="http://pastebin.com/683Gk9xZ">some random Pastebin</a>. Poor documentation on those, however. I&#39;m very dissappointed that a random Pastebin did&#39;t properly document important usage issues like parameter ranges. I will not be shopping there again, I can tell you that. Unfortunately, I was able to recall approximately, roundabout, in the neighborhood of, more-or-less, nothing at all from a computer graphics course I took, which went over color representations. As a result, the color range I was able to produce is not that large. There&#39;s a lot of repeat colors, or very similar looking colors.</p>
+
+<p>I optimized a lot of the code. It&#39;s still far from clean, though. Any GUI code I produce in Unity tends to be a complete mess. I tried for modularity this time, but it seemed like it would have taken longer than it was worth, so I told it to go fuck itself.</p>
+
+<p>Besides a lot of copy-and-paste code I can use for later projects, out of this project I got some experience with a cool built-in feature in Unity called TrailRenderer. 3D objects can get pretty stale after a while. There&#39;s no life to them. Trails, however, are always facing the camera, and have a more cell-shadey feel. They jump off the screen and grab your attention.</p>
+
+<p><a href="https://rawgit.com/apiotrow/UnityExperiments/master/gravity1.2/gravity1.2.html"><img src="/assets/2014-08-22/4ofem.png"></a></p>
+
+<p>I gave the user the option to either render every trail for every planet, or render just one at a time, and cycle through each one. I thought it&#39;d be interesting to see individual trajectories. Turns out it&#39;s pretty, but not that interesting. From the experiments I did with having multiple &quot;suns,&quot; which are my static planets that generate a lot of force, and from having an object flying around that is only affected by the gravity of each planet, and not the sun, I can tell that this project could be more interesting. Both of those additions made for weirder orbital paths. However, I think I&#39;m going to move on from this project for now. I want to go back to playing with Voxels. I&#39;m interested to see how smooth I can make voxel terrain be before the amount of rendering required causes significant slowdown. Blocky Minecraft like terrain is fun, but smooth is more realistic and would allow for more unique block breaking and placing.</p>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2014/11/09/Got-That-Greenlight/">
+            I got greenlit?
+            <small>09 Nov 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2014/10/21/Game-Pitch-%231/">
+            Game Pitch
+            <small>21 Oct 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2014/10/04/Floppy%20Man/">
+            Floppy Man
+            <small>04 Oct 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>

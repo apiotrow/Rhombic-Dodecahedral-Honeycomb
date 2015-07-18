@@ -11,6 +11,7 @@ public class FractalGen : MonoBehaviour {
 	int maxChunks = 100; //if so, max length of strip
 	bool addingCollider = false; //do we want to be able to walk on it?
 	string constructionBit = "marker"; //prefab fractal is composed of
+	bool usingResourcePool = true;
 
 	HashSet<Vector3> dontDupe = new HashSet<Vector3>();
 	float x = 0;
@@ -19,8 +20,19 @@ public class FractalGen : MonoBehaviour {
 	Queue<string> toRenderChunkQueue = new Queue<string>();
 	Queue<GameObject> beenRenderedChunkQueue = new Queue<GameObject>();
 	Vector3 camGoTo;
+	GameObject[] chunkPool;
+	int poolIter = 0;
 
 	void Start() {
+		if(usingResourcePool){
+			chunkPool = new GameObject[maxChunks];
+			for(int i = 0; i < chunkPool.Length; i++){
+				chunkPool[i] = new GameObject();
+				chunkPool[i].name = "chunk" + i;
+				chunkPool[i].transform.SetParent(GameObject.Find("Chunks").transform);
+			}
+		}
+
 		StartCoroutine(generateLStringDeterministic(Grammars.rhombus, 15, "ac"));
 		StartCoroutine(chunkFactory());
 		StartCoroutine(cameraFollow());
@@ -207,9 +219,12 @@ public class FractalGen : MonoBehaviour {
 	 * smaller meshes
 	 */
 	GameObject createTiles(List<Vector3> chunkVecs){
-		GameObject newChunk = GameObject.Instantiate(Resources.Load("Prefabs/Fractal/Chunk")) as GameObject;
-		newChunk.transform.SetParent(GameObject.Find("Chunks").transform);
+		if(usingResourcePool){
 
+		}else{
+			GameObject newChunk = GameObject.Instantiate(Resources.Load("Prefabs/Fractal/Chunk")) as GameObject;
+			newChunk.transform.SetParent(GameObject.Find("Chunks").transform);
+		}
 		foreach(Vector3 vec in chunkVecs){
 			GameObject g =
 				GameObject.Instantiate(Resources.Load("Prefabs/Fractal/" + constructionBit), 

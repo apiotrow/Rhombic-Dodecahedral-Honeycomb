@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Aaron Piotrowski &middot; Programming
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+    
+    <link rel="stylesheet" href="/highlight/styles/monokai_sublime.css">
+    <script src="/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p></p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">Contact</a>
+        
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+      <a class="sidebar-nav-item" href="https://github.com/apiotrow/">My GitHub</a>
+      
+      <a class="sidebar-nav-item" href="http://www.linkedin.com/pub/aaron-piotrowski/a7/142/a4a/">My LinkedIn</a>
+
+
+
+    <a class="sidebar-nav-item" href="https://github.com/poole/lanyon">Lanyon Jekyll Theme</a>
+    <span class="sidebar-nav-item">Currently v1.0.0</span>
+  </nav>
+
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2014. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">Aaron Piotrowski</a>
+            <small>Programming</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2014/08/29/Cel%20Shading%20Adventure/">
+        EVERYTHING GETS A CEL SHADER
+      </a>
+    </h1>
+
+    <span class="post-date">29 Aug 2014</span>
+
+    <p>So I think I&#39;m about to get obsessed with cel shading. I like the look of it. I started by googling &quot;unity cel shader&quot; and getting crap results. Then, after several hours, I found out Unity has a built-in cel shader. Fucking everything in the world.</p>
+
+<p>I&#39;m also starting to see the merit of quick, messy prototypes composed largely of things other people have made. Here&#39;s my current mess:</p>
+
+<p><img src="/assets/2014-08-29/alice.png"></p>
+
+<p>Unity&#39;s stock 3rd person controller, some random &quot;Alice&quot; prefab I found, and no attempt at making decent terrain. I just wanted to see how a 3D adventure game would look if I cel shaded the fuck out of everything. So far, I&#39;m in favor.</p>
+
+<p>In general, I&#39;ve been focusing on character models. I&#39;ve rarely focused on art. I&#39;m thinking I should strengthen that weakness. I came across this character creation tool called UMA that seems like it&#39;s going for realism:</p>
+
+<p><img src="/assets/2014-08-29/uma.png"></p>
+
+<p>Definitely some uncanny valley stuff going on there. I have nothing but respect for the guy or girl that coded this, because I wouldn&#39;t even know where to begin, but those are some awkward looking character models. I&#39;ve decided to stray away from realism and move more towards cartoonish models. Cartoonish models are something that someone with my art creation skills (see: none) can deal with.</p>
+
+<p>I did mess with voxels, for about 30 total minutes. I think I&#39;ve lost my passion for them. I feel like there was a voxel feeding frenzy for a few years, and now we&#39;re reaching a point of stability where everything interesting that could be done with them has been done. I doubt I&#39;ll change the world if I start working with them. A friend of mine this Summer wrote on the whiteboard in our game lab &quot;Because you&#39;ll never pull a Notch.&quot; I believe he was right.</p>
+
+<p>Here&#39;s an infinite-world voxel generator I came across during one of my my Google adventures:</p>
+
+<p><img src="/assets/2014-08-29/voxel.png"></p>
+
+<p>Beutiful, yes, but boring as a dog&#39;s ass. Even a cel shader couldn&#39;t make this interesting, and that&#39;s saying something. Voxel projects also appear quite grueling in the code department. At least the good voxel projects.</p>
+
+<p>The next step for me is probably more of this 3D cartoony cel shadey stuff. When I get burned out on that, I plan to go back to my gravity project. I think I found a way to turn it into an actual game.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2014/08/22/Gravity%201.2.md/">
+        Gravity 1.2
+      </a>
+    </h1>
+
+    <span class="post-date">22 Aug 2014</span>
+
+    <p>Added a lot to my gravity project. Several GUI elements that allow you to tweak the parameters. Changed the trails to have black borders, so you can see which is behind the other. Also made the trails various neon colors. Unity doesn&#39;t have any functions to create colors from HSV. They only have RGB. Sucks, because randomized RGB values tend to be dull tones. To get some bright colors, I used a couple of HSV functions I found in <a href="http://pastebin.com/683Gk9xZ">some random Pastebin</a>. Poor documentation on those, however. I&#39;m very dissappointed that a random Pastebin did&#39;t properly document important usage issues like parameter ranges. I will not be shopping there again, I can tell you that. Unfortunately, I was able to recall approximately, roundabout, in the neighborhood of, more-or-less, nothing at all from a computer graphics course I took, which went over color representations. As a result, the color range I was able to produce is not that large. There&#39;s a lot of repeat colors, or very similar looking colors.</p>
+
+<p>I optimized a lot of the code. It&#39;s still far from clean, though. Any GUI code I produce in Unity tends to be a complete mess. I tried for modularity this time, but it seemed like it would have taken longer than it was worth, so I told it to go fuck itself.</p>
+
+<p>Besides a lot of copy-and-paste code I can use for later projects, out of this project I got some experience with a cool built-in feature in Unity called TrailRenderer. 3D objects can get pretty stale after a while. There&#39;s no life to them. Trails, however, are always facing the camera, and have a more cell-shadey feel. They jump off the screen and grab your attention.</p>
+
+<p><a href="https://rawgit.com/apiotrow/UnityExperiments/master/gravity1.2/gravity1.2.html"><img src="/assets/2014-08-22/4ofem.png"></a></p>
+
+<p>I gave the user the option to either render every trail for every planet, or render just one at a time, and cycle through each one. I thought it&#39;d be interesting to see individual trajectories. Turns out it&#39;s pretty, but not that interesting. From the experiments I did with having multiple &quot;suns,&quot; which are my static planets that generate a lot of force, and from having an object flying around that is only affected by the gravity of each planet, and not the sun, I can tell that this project could be more interesting. Both of those additions made for weirder orbital paths. However, I think I&#39;m going to move on from this project for now. I want to go back to playing with Voxels. I&#39;m interested to see how smooth I can make voxel terrain be before the amount of rendering required causes significant slowdown. Blocky Minecraft like terrain is fun, but smooth is more realistic and would allow for more unique block breaking and placing.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2014/08/19/Gravity-and-Balance/">
+        Gravity and Balance
+      </a>
+    </h1>
+
+    <span class="post-date">19 Aug 2014</span>
+
+    <p>Had this idea of a plate, and on the plate is a ball. The plate has to continually tilt in order to keep the ball from rolling off the edge. I wondered how effective I could make an AI-driven plate. Ended up with something like this:</p>
+
+<pre><code class="cs">
+platePos = transform.position;
+ballPos = ball.transform.position;
+
+float xdiff = platePos.x - ballPos.x;
+float zdiff = platePos.z - ballPos.z;
+dist = Vector3.Distance (ballPos, platePos);
+float xrot = transform.rotation.eulerAngles.x;
+float zrot = transform.rotation.eulerAngles.z;
+
+//if ball is left or right of center, tilt
+//toward center
+if (xdiff < 0) {
+    transform.RotateAround (transform.position, 
+    Vector3.forward, 
+    Time.deltaTime * dist);
+} else {
+    transform.RotateAround (transform.position, 
+    Vector3.back, 
+    Time.deltaTime * dist);
+}
+
+//if ball is above or below center, tilt
+//toward center
+if (zdiff < 0) {
+    transform.RotateAround (transform.position, 
+    Vector3.left, 
+    Time.deltaTime * dist);
+} else {
+    transform.RotateAround (transform.position, 
+    Vector3.right, 
+    Time.deltaTime * dist);
+}
+
+</code></pre>
+
+<p>This method is a bit stupid. I&#39;m just testing the ball&#39;s position relative to the center of the plate. If it&#39;s off to one side, the plate tilts. How quickly it tilts depends on the ball&#39;s distance from the center. As the ball nears the edge, the plate will begin tilting faster. The downside of this method is that the plate gets jittery at extreme tilts, most likely because I&#39;m tilting on two axes at once, and they end up fighting with each other. I tried the pro method of determining the needed axis of tiltage by calculating a vector off of the ball. When I tried that, the vector worked, but the tilt didn&#39;t. I blame quaternions, and my refusal to understand what a quaternion is.</p>
+
+<p><a href="https://rawgit.com/apiotrow/UnityExperiments/master/balance/balance.html"><img src="/assets/2014-08-19/balancesc.png"></a></p>
+
+<p>I also added to a project I didn&#39;t think would go anywhere. It started out as an attempt to make a game where you leap from planet to planet, coming under the effect of their gravitational fields as you neared them. As I worked on it, I moved away from that and just ended up wanting to make an orbit simulation. I was interested in how some of the planetary systems I was making were tending toward equilibrium. So I decided to work on a solar system type thing, where each planet was subject to the gravitational pull of every other planet. I went balls out and decided to do minimal work with Unity&#39;s interface, opting instead to generate as much as I could within the code. I ended up with some pretty sick loops. Check em:</p>
+
+<pre><code class="cs">
+//array of planets
+public Planet[] planets;
+    
+void Start () { 
+
+planets = new Planet[numPlanets];
+
+//inital planet we make clones from
+planets[0] = 
+    GameObject.Find ("Planet1").GetComponent ("Planet") as Planet;
+
+//the sun
+planets[1] = 
+    GameObject.Find ("Planet3").GetComponent ("Planet") as Planet;
+planets [1].renderer.material.color = Color.yellow;
+
+float maxrange = 200f;
+
+for(int i = 2; i < planets.Length; i++){
+    //spawn planet in a random location
+    Vector3 randLoc = 
+        new Vector3(Random.Range (-maxrange,maxrange), 
+            Random.Range (-maxrange,maxrange), 
+            Random.Range (-maxrange,maxrange));
+
+    //make a clone
+    Planet newplanet = 
+        Instantiate (planets[0], 
+            randLoc, 
+            transform.rotation) as Planet;
+        
+    //add it to the array
+    planets[i] = newplanet;
+
+    //give it a random mass
+    planets[i].rigidbody.mass = 
+        Random.Range (PlayerPrefs.GetFloat ("massMin"), 
+        PlayerPrefs.GetFloat ("massMax"));
+    massMax = PlayerPrefs.GetFloat ("massMax");
+    massMin = PlayerPrefs.GetFloat ("massMin");
+
+    //give it a random color
+    planets[i].renderer.material.color = 
+        new Color(Random.Range (0f,1f),
+            Random.Range (0f,1f),
+            Random.Range (0f,1f));
+
+    //give it a random size
+    float randScale = Random.Range (1f, 6f);
+    planets[i].transform.localScale += 
+        new Vector3(randScale,randScale,randScale);
+
+    //give it a random starting direction
+    float rand = Random.Range (0f,1f);
+    Vector3 dir;
+            
+    if(rand > 0f && rand < 0.25f)
+        dir = Vector3.left;
+    else if(rand > 0.25f && rand < 0.5f)
+        dir = Vector3.right;
+    else if(rand > 0.5f && rand < 0.75f)
+        dir = Vector3.forward;
+    else if(rand > 0.75f && rand < 1f)
+        dir = Vector3.back;
+    else
+        dir = Vector3.back;
+            
+    planets[i].rigidbody.AddForce (dir * 900);
+}
+}
+
+void FixedUpdate () {
+//make every planet influenced by the gravity of every other planet.
+//the strength of gravitational pull is proportional to its mass
+for(int i = 0; i < planets.Length; i++){
+    for(int j = 0; j < planets.Length; j++){
+        if (i != j)
+            planets[i].rigidbody.AddForce(
+            (planets[j].transform.position 
+            - planets[i].transform.position) 
+             / (planets[j].rigidbody.mass / 18));
+        }
+    }
+}
+}
+
+</code></pre>
+
+<p>Pretty beastly nested loop I have there. Don&#39;t act like you&#39;re not impressed. This is just a summary of the code. I left out all the butt-ugly GUI and PlayerPref junk. I didn&#39;t realize passing data from one scene to another was so easy in Unity. For a long time I thought Application.LoadLevelAdditive was the only way to preserve anything. That&#39;s a super ugly method, where you&#39;re forced to iteratively delete every object you don&#39;t want passed in to the level you&#39;re loading. PlayerPrefs allowed me to keep user inputs across level reloads. Hence, a brand new GUI to streamline the solar system creation process.</p>
+
+<p>This build is still buggy, but can generate some alright results if you mess with the settings enough. Not sure where I&#39;m going to take this one. I may not find the orbital equlibrium I was seeking, but I think some cooler stuff might spawn from it.</p>
+
+<p><a href="https://rawgit.com/apiotrow/UnityExperiments/master/gravity/gravity.html"><img src="/assets/2014-08-19/orbitsc.png"></a></p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2014/08/14/we-jekyll-now/">
+        We Jekyll Now
+      </a>
+    </h1>
+
+    <span class="post-date">14 Aug 2014</span>
+
+    <p>Just migrated this blog from Wordpress.com to my GitHub. Using this thing called Jekyll. It&#39;s pretty hardcore. When I do things through the command line I feel like I&#39;m hacking into The Matrix. It took a long journey of Googling to get it running. It went like this:</p>
+
+<div class="highlight"><pre><code class="language-c#" data-lang="c#"><span class="k">void</span> <span class="nf">InstallJekyll</span><span class="p">(){</span>
+    <span class="n">UpdateGem</span><span class="p">();</span>
+    <span class="n">InstallJekyll</span><span class="p">();</span>
+    <span class="n">MakeABlog</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">void</span> <span class="nf">UpdateGem</span><span class="p">(){</span>
+    <span class="k">try</span><span class="p">{</span>
+        <span class="n">gem</span> <span class="n">install</span> <span class="n">rubygems</span><span class="p">-</span><span class="n">update</span><span class="p">;</span>
+        <span class="n">update_rubygems</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">){</span>
+        <span class="kt">string</span> <span class="n">err</span> <span class="p">=</span> <span class="s">&quot;Fetching: eventmachine-1.0.3.gem (100%) ERROR:  While executing gem ... (Gem::FilePermissionError) You don&#39;t have write permissions for the /Library/Ruby/Gems/2.0.0 directory.&quot;</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">ToString</span><span class="p">()</span> <span class="p">==</span> <span class="n">err</span><span class="p">){</span>
+            <span class="n">InstallRbenv</span><span class="p">();</span>
+            <span class="n">UpdateGem</span><span class="p">();</span>
+            <span class="c1">//infinite loops are best loops</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">void</span> <span class="nf">InstallRbenv</span><span class="p">(){</span>
+    <span class="k">goto</span> <span class="n">https</span><span class="p">:</span><span class="c1">//github.com/sstephenson/rbenv;</span>
+    <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="c1">//github.com/sstephenson/rbenv.git ~/.rbenv;</span>
+    <span class="n">echo</span> <span class="err">&#39;</span><span class="n">export</span> <span class="n">PATH</span><span class="p">=</span><span class="s">&quot;$HOME/.rbenv/bin:$PATH&quot;</span><span class="err">&#39;</span> <span class="p">&gt;&gt;</span> <span class="p">~/.</span><span class="n">bash_profile</span><span class="p">;</span>
+    <span class="n">echo</span> <span class="err">&#39;</span><span class="n">eval</span> <span class="s">&quot;$(rbenv init -)&quot;</span><span class="err">&#39;</span> <span class="p">&gt;&gt;</span> <span class="p">~/.</span><span class="n">bash_profile</span><span class="p">;</span>
+    <span class="n">type</span> <span class="n">rbenv</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">void</span> <span class="nf">InstallJekyll</span><span class="p">(){</span>
+    <span class="n">gem</span> <span class="n">install</span> <span class="n">jekyll</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">void</span> <span class="nf">MakeABlog</span><span class="p">(){</span>
+    <span class="p">???;</span>
+    <span class="n">FuckItJustFindATemplate</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">void</span> <span class="nf">FuckItJustFindATemplate</span><span class="p">(){</span>
+    <span class="n">google</span> <span class="s">&quot;jekyll template&quot;</span><span class="p">;</span>
+    <span class="n">click</span> <span class="n">Poole</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">GitHub</span><span class="p">;</span>
+    <span class="n">mkdir</span> <span class="n">thisIsMyBlogIMadeWithNoHelp</span><span class="p">;</span>
+    <span class="n">cd</span> <span class="n">thisIsMyBlogIMadeWithNoHelp</span><span class="p">;</span>
+    <span class="n">git</span> <span class="n">clone</span> <span class="n">git@github</span><span class="p">.</span><span class="n">com</span><span class="p">:</span><span class="n">poole</span><span class="p">/</span><span class="n">poole</span><span class="p">.</span><span class="n">git</span><span class="p">;</span>
+    <span class="n">cp</span> <span class="p">-</span><span class="n">a</span> <span class="p">/</span><span class="n">poole</span><span class="p">/.</span> <span class="p">.;</span>
+    <span class="n">rm</span> <span class="p">-</span><span class="n">r</span> <span class="n">poole</span><span class="p">;</span>
+    <span class="n">rm</span> <span class="p">-</span><span class="n">r</span> <span class="p">.</span><span class="n">git</span><span class="p">;</span>
+    <span class="n">git</span> <span class="n">init</span><span class="p">;</span>
+    <span class="n">git</span> <span class="n">remote</span> <span class="k">add</span> <span class="n">origin</span> <span class="n">git@github</span><span class="p">.</span><span class="n">com</span><span class="p">:</span><span class="n">apiotrow</span><span class="p">/</span><span class="n">apiotrow</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">git</span><span class="p">;</span>
+    <span class="n">git</span> <span class="k">add</span> <span class="p">-</span><span class="n">A</span><span class="p">;</span>
+    <span class="n">git</span> <span class="n">commit</span> <span class="p">-</span><span class="n">m</span> <span class="s">&quot;First commit. Really proud of all this stuff I made completely on my own&quot;</span><span class="p">;</span>
+    <span class="n">git</span> <span class="n">push</span> <span class="p">-</span><span class="n">u</span> <span class="n">origin</span> <span class="n">master</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+<p>And now I have this blog. </p>
+
+<p><img src="http://apiotrow.github.io/assets/2014-08-14/neodecodelogo.jpg" alt="matrix"></p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2014/08/09/first-post/">
+        First Post
+      </a>
+    </h1>
+
+    <span class="post-date">09 Aug 2014</span>
+
+    <p>Skyboxes are these cool things in Unity that allow you to create skies. Skyboxes look a lot the inner faces of a cube, but they&#39;re different in that you can&#39;t reach them in-game. Professionally done skyboxes are usually high-res, use a bit of warping, and are tiled perfectly so that you can&#39;t see any seams. When you pan around in a 3D environment with a skybox, it does give the impression of a sky. If you don&#39;t want to use someone else&#39;s work, you can create your own skybox. All you need is Unity, an image, an image editor, and the ability to divide by 4. Here&#39;s a short tutorial:</p>
+
+<p>Step 1: Find your picture</p>
+
+<p><img src="http://apiotrow.github.io/assets/2014-08-09/1336023490071.png" alt="My helpful screenshot"></p>
+
+<p>Step 2: Crop it 4 times</p>
+
+<p><img src="http://apiotrow.github.io/assets/2014-08-09/backimage.png" alt="My helpful screenshot"><img src="http://apiotrow.github.io/assets/2014-08-09/leftimage.png" alt="M"><img src="http://apiotrow.github.io/assets/2014-08-09/downimage.png" alt="My helpful screenshot"><img src="http://apiotrow.github.io/assets/2014-08-09/rightimage.png" alt="My helpful screenshot"></p>
+
+<p>Step 3: Put it in Unity</p>
+
+<p><img src="http://apiotrow.github.io/assets/2014-08-09/screeny.png" alt="My helpful screenshot"></p>
+
+<p>Step 4: Take a screenshot and attach it to a job application.</p>
+
+  </div>
+  
+</div>
+
+<div class="pagination">
+  
+    <span class="pagination-item older">Older</span>
+  
+  
+    
+      <a class="pagination-item newer" href="/">Newer</a>
+    
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>

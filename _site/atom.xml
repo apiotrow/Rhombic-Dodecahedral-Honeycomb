@@ -1,0 +1,646 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Aaron Piotrowski</title>
+ <link href="http://apiotrow.github.io/atom.xml" rel="self"/>
+ <link href="http://apiotrow.github.io/"/>
+ <updated>2014-11-10T17:01:30-08:00</updated>
+ <id>http://apiotrow.github.io</id>
+ <author>
+   <name></name>
+   <email>markdotto@gmail.com</email>
+ </author>
+
+ 
+ <entry>
+   <title>I got greenlit?</title>
+   <link href="http://apiotrow.github.io/2014/11/09/Got-That-Greenlight/"/>
+   <updated>2014-11-09T00:00:00-08:00</updated>
+   <id>http://apiotrow.github.io/2014/11/09/Got-That-Greenlight</id>
+   <content type="html">&lt;p&gt;Pitched my &lt;a href=&quot;https://rawgit.com/apiotrow/Alice/master/Assets/Executables/Alice1.2/Alice1.2.html&quot;&gt;Alice&lt;/a&gt; game for pitch #2. At around 3 AM the night prior to the pitch date, I realized I had nothing I was satisfied with. I decided to return to my Alice game at that point, and try to form a pitch for it. About half of the pitch ended up being &amp;quot;storyline.&amp;quot; Eew. I fell on my crutch of humor, just to make the pitch more bearable. I got the laughs, and people were impressed with prototype, but the rest was just yuck. From what I heard, the last 10 seconds of this video swayed people in my favor:&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;//www.youtube.com/embed/bRmQwudye6M&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;I was invited to bring the game back for our &amp;quot;second chance&amp;quot; pitches, where we re-pitch something we felt was passed over. I think I&amp;#39;ll pass, though. Plus, who needs a re-pitch when you got a motherfucking GREENLIGHT already?! Well, not a greenlight, technically. We keep calling it that, but it&amp;#39;s a group of 45 pitches, out of the 320 total pitches, that will get to move on to the second round. My pitch #3 was one that got selected. Here&amp;#39;s the pitch in it&amp;#39;s entirety. I sought to minimize the text on the slides, as per suggestions I got on my previous pitches. As a result, the imagery to follow should do a fine job on its own of conveying just what a travesty this game idea is:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2014-11-09/06.png&quot;&gt;
+&lt;img src=&quot;/assets/2014-11-09/07.gif&quot;&gt;
+&lt;img src=&quot;/assets/2014-11-09/08.png&quot;&gt;
+&lt;img src=&quot;/assets/2014-11-09/11.png&quot;&gt;
+&lt;img src=&quot;/assets/2014-11-09/19.gif&quot;&gt;
+&lt;img src=&quot;/assets/2014-11-09/12.png&quot;&gt;
+&lt;img src=&quot;/assets/2014-11-09/13.png&quot;&gt;
+&lt;img src=&quot;/assets/2014-11-09/14.png&quot;&gt;
+&lt;img src=&quot;/assets/2014-11-09/15.png&quot;&gt;
+&lt;img src=&quot;/assets/2014-11-09/09.gif&quot;&gt;
+&lt;img src=&quot;/assets/2014-11-09/10.gif&quot;&gt;
+&lt;img src=&quot;/assets/2014-11-09/16.png&quot;&gt;
+&lt;img src=&quot;/assets/2014-11-09/17.png&quot;&gt;
+&lt;img src=&quot;/assets/2014-11-09/18.png&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Have you ever seen a bigger load of shit in your life? This idea sounded plausible for the first 5 minutes I was thinking of it, then soon became the worst idea ever, for various reasons. But, out of sheer hilarity at the thought of pitching this, I went through with it. I was a good student, though. I did my research beforehand to see if anything like this already existed. I think perhaps there was a reason (or a few) that, no, in fact, nothing like this exists. However, I did find a thread on /r/Oculus from a year ago where someone proposed this idea and got some solid feedback:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2014-11-09/20.png&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;There&amp;#39;s a few other concerns, such as the ones expressed in the class feedback Google doc:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2014-11-09/21.png&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Harsh. However, having my pitch selected means I have to refine it, build a prototype, and then pitch it again. The good part is that I can bring one classmate on to help me. I knew from the beginning who I wanted. I have a friend who has made it clear that he hates any kind of custom hardware, and is only interested in programming a game. I joked with him that if Hoppity-Boing made it to the final 15, I&amp;#39;d force him to join my team and make him work on the trampoline the entire year. I broke the bad new to him soon after I heard I was going on to round 2:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2014-11-09/22.png&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;All in all, I&amp;#39;m pretty amped to start this. At least when we don&amp;#39;t make it round three, I will have the security of knowing we stood zero chance of making it in the first place.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Game Pitch</title>
+   <link href="http://apiotrow.github.io/2014/10/21/Game-Pitch-%231/"/>
+   <updated>2014-10-21T00:00:00-07:00</updated>
+   <id>http://apiotrow.github.io/2014/10/21/Game-Pitch-#1</id>
+   <content type="html">&lt;p&gt;Had to flex my game design skills and create a 2-minute game pitch. First major assignment in this Game Design Studio senior sequence at my school. I tried to make my pitch programming-centric by building it off of my &lt;a href=&quot;https://rawgit.com/apiotrow/UnityExperiments/master/gravity1.2/gravity1.2.html&quot;&gt;Orbit Experiment&lt;/a&gt;. Inspired by the non-competitive, chill, veg-out game called Flower,&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;//www.youtube.com/embed/nJam5Auwj1E&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;I pitched a game where you begin as an electron directly after the big bang, and work your way up in complexity, becoming an atom, a molecule, a macromolecule, a planet, star, solar system, galaxy, ..., universe, or something. I thought it was pretty cool. But perhaps it was hubris (foreshadowing). I brought out the big guns for this one, and made a 20-second-or-so gameplay video. You know, to really bring this pitch to the next level. Here&amp;#39;s the results:&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;//www.youtube.com/embed/JkmMA_l-lDY&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;The humor went over well, but the game wasn&amp;#39;t selected. I&amp;#39;m pretty proud of the quality of my pitch. I rehearsed it, refined it, and polished into a solid 2-minute explication. I suspect I was missing that crucial element of good game pitches, though, which is the game not sucking. The feedback I got from the class via our shared Google Doc suggests this, as well as a few of my better qualities:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2014-10-21/02.png&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;#39;m ashamed to admit that the main thing I&amp;#39;ll remember from this is that someone thinks I&amp;#39;m handsome. The rest of the feedback suggests that I&amp;#39;m a good presenter, aside from my habit of &amp;quot;reading walls of text,&amp;quot; which I think I did on a couple of slides. Overall, I think the game just sucked.&lt;/p&gt;
+
+&lt;p&gt;As for the direction I&amp;#39;ll take for my next pitch, games that use custom hardware seemed to have an edge. A sky-diving simulation made the cut for pitch #1. This slide from their presentation still makes me laugh:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2014-10-21/01.png&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;A friend of mine also pitched a pretty amazing game about babies. There were audible gasps during his presentation when he went over the points underlined below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2014-10-21/03.png&quot;&gt;
+&lt;img src=&quot;/assets/2014-10-21/04.png&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;The feedback he got was also entertaining:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2014-10-21/06.png&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;This was multiplied by the fact that he began his presentation in the crouching position, hiding behind the podium. All we heard was audio of a baby crying coming from his phone, then after a few seconds he popped up to a standing position, at which point we could now see the backpack he was wearing on the front of his body, presumably to mimic pregnancy. All in all it was one of the most transcendent pitches we had over those two days.&lt;/p&gt;
+
+&lt;p&gt;Despite my desire to get a pitch selected, I always keep in mind that this first installment of our senior game design sequence is mostly useless. It&amp;#39;s entirely focused on game design, which is about as much a boon to our hiring potential as our portfolio of DBZ fan-fiction we wrote in 9th grade. Near the end of this quarter we&amp;#39;ll begin the real work of team formation and some kind of actual technical work, which I eagerly await.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Floppy Man</title>
+   <link href="http://apiotrow.github.io/2014/10/04/Floppy%20Man/"/>
+   <updated>2014-10-04T00:00:00-07:00</updated>
+   <id>http://apiotrow.github.io/2014/10/04/Floppy Man</id>
+   <content type="html">&lt;p&gt;To know how proud I am of myself, you only need to look at this screenshot:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://rawgit.com/apiotrow/UnityExperiments/master/ropes/ropes1.0/ropes1.0.html&quot;&gt;&lt;img src=&quot;/assets/2014-10-04/01.png&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I attempted to create a creature that would keep itself erect by placing its feet in the right place as its weight shifted around. I was inspired by this video:&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;//www.youtube.com/embed/Qi5adyccoKI&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/center&gt; &lt;/p&gt;
+
+&lt;p&gt;The level of realism there is astonishing to me. I decided to try to recreate those effects from scratch, starting with just trying making a humanoid keep iself from falling over by shifting it&amp;#39;s feet around when the center of gravity moves. I&amp;#39;m not sure when I stopped that, but I think it was around the time I randomly stumbled into &lt;a href=&quot;http://pastebin.com/j3DWqe3R&quot;&gt;DragRigidBody&lt;/a&gt;, a script that allows you to drag items in a scene using the mouse. My project quickly devolved from procedural generation into flinging things around.&lt;/p&gt;
+
+&lt;p&gt;I imported some rope-like things I created in a previous project, which use &lt;a href=&quot;http://docs.unity3d.com/Manual/class-ConfigurableJoint.html&quot;&gt;Configurable Joints&lt;/a&gt; to connect with each other in a chain. I think these are generally used for limbs, signs, doors, and other swinging things. Once I got the rope thing working though, I&amp;#39;ve been obsessed with it. It&amp;#39;s incredibly versatile, usable for anything from wrecking balls to horse-lifting:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2014-10-04/02.png&quot;&gt;
+&lt;img src=&quot;/assets/2014-10-04/03.png&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;#39;ll probably throw it up on the Unity asset store eventually. I can&amp;#39;t deny the masses something as ingenious and clearly error-free as this.&lt;/p&gt;
+
+&lt;p&gt;I also recently found out that porting Unity projects to Android is fairly painless. Floppy Man didn&amp;#39;t even require implementing a control scheme for touch-screen. Alice did, however. I had to find a mobile joystick/button tool to make that game playable. I spent about 2 hours in vain trying to get it to play well with Unity&amp;#39;s character controller. It ended up looking like it wasn&amp;#39;t worth the effort, though, and that making your own controller specifically for the GUI joysticks would be the only option. Still, it looked powerful, so it&amp;#39;s something I&amp;#39;ll probably experiment with more in the future:&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;&lt;img src=&quot;/assets/2014-10-04/05.jpg&quot;&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;Then again, I&amp;#39;m being ever so slightly encouraged by a professor of mine to move away from Unity, and into a more C++-based environment. I&amp;#39;ve resisted as long as I could, due to the lack of any decent C++-based game engine or game-oriented libraries out there, but my will is weakening. I may begin using SFML soon, hardcoding games for 2 weeks that will be on par with a game that could be made in GameMaker in 2 days. But it&amp;#39;s all about street cred, right? Knowing those pointers, those templates, those type declarations, those mallocs, and that polymorphism.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Brain Hemispheres</title>
+   <link href="http://apiotrow.github.io/2014/09/15/LeftRightBrain/"/>
+   <updated>2014-09-15T00:00:00-07:00</updated>
+   <id>http://apiotrow.github.io/2014/09/15/LeftRightBrain</id>
+   <content type="html">&lt;p&gt;Messed around as much as I could with Unity&amp;#39;s built-in image effects. Once I found the &lt;a href=&quot;http://docs.unity3d.com/Manual/script-EdgeDetectEffectNormals.html&quot;&gt;Edge Detect Effect Normals&lt;/a&gt; filter and saw it&amp;#39;s effects, I figured this would be a good time to make a game where there are two cameras side by side, each one corresponding to the left and right eye, and make them view the world in different ways. &lt;a href=&quot;http://en.wikipedia.org/wiki/Lateralization_of_brain_function&quot;&gt;Lateralization of Brain Function&lt;/a&gt; is a fun fact of the brain that pop-psychology has fallen in love with in the past few years. The left hemisphere is mathematical and logical, the right hemisphere is creative and artsy.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://rawgit.com/apiotrow/UnityExperiments/master/leftrightbrain/leftrightbrain1.0/leftrightbrain1.0.html&quot;&gt;&lt;img src=&quot;/assets/2014-09-15/01.png&quot;&gt;&lt;/a&gt;
+&lt;a href=&quot;https://rawgit.com/apiotrow/UnityExperiments/master/leftrightbrain/leftrightbrain1.0/leftrightbrain1.0.html&quot;&gt;&lt;img src=&quot;/assets/2014-09-15/02.png&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The right hemisphere actually controls the left side of the body, and vice versa, so I reversed the left-right split. Scientific accuracy and realism are very important principles in this simulation, as you can clearly see.&lt;/p&gt;
+
+&lt;p&gt;The right camera is using only the edge detect script, with one important variable maxed out to the point where everything is whited out except for edges, while the left camera is using just about every other filter in existence. Namely, &lt;a href=&quot;http://docs.unity3d.com/Manual/script-GlowEffect.html&quot;&gt;Glow Effects&lt;/a&gt;,  &lt;a href=&quot;http://docs.unity3d.com/Manual/script-NoiseAndGrain.html&quot;&gt;Noise and Grain&lt;/a&gt;,  &lt;a href=&quot;http://docs.unity3d.com/Manual/script-SunShafts.html&quot;&gt;Sun Shafts&lt;/a&gt;, and  &lt;a href=&quot;http://docs.unity3d.com/Manual/script-Vignetting.html&quot;&gt;Vignetting&lt;/a&gt;. I also experimented with &lt;a href=&quot;http://docs.unity3d.com/Manual/script-CameraMotionBlur.html&quot;&gt;Camera Motion Blur&lt;/a&gt;, &lt;a href=&quot;http://docs.unity3d.com/Manual/script-Bloom.html&quot;&gt;Bloom&lt;/a&gt;, and a few others, but they were either redundant or wonky.&lt;/p&gt;
+
+&lt;p&gt;I also played with camera culling to make certain objects only viewable with one eye. Not sure how a game would actually use this. The challenge would be something like, &amp;quot;How quickly can you dart your eyes back and forth? Are you man enough to shift your focus between two screens rapidly? Do you have what it takes notice differences? Try Left-And-Right Brain Simulator and find out... if you&amp;#39;ve got the balls.&amp;quot;&lt;/p&gt;
+
+&lt;p&gt;I&amp;#39;m pretty sure this would sell out in seconds. &lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Alice</title>
+   <link href="http://apiotrow.github.io/2014/09/05/Alice/"/>
+   <updated>2014-09-05T00:00:00-07:00</updated>
+   <id>http://apiotrow.github.io/2014/09/05/Alice</id>
+   <content type="html">&lt;p&gt;Decided to work on the cel-shaded Alice adventure, rather than the gravity game. Made quite a bit of progress.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://rawgit.com/apiotrow/Alice/master/Assets/Executables/Alice1.1/Alice1.1.html&quot;&gt;&lt;img src=&quot;/assets/2014-09-05/screens1tall.png&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The core mechanic is the changing of the size of the player&amp;#39;s character. I thought it had the potential to become a puzzle game. Something where you need to manage your size changes to overcome certain obstacles, or reach certain items. There&amp;#39;s a level in Mario 64 that uses this.&lt;/p&gt;
+
+&lt;p&gt;Currently, there&amp;#39;s two ways for Alice&amp;#39;s size to change. You can manually do it with the 1 and 2 keys or with the mouse scroll wheel, or have be done automatically by way of an object I created that, as you near it, causes your size to diminish. As you can see above, the level begins with Alice in front of a cave that can easily be walked through while she&amp;#39;s tiny. By the time she exits, though, she&amp;#39;s grown to a point where she can&amp;#39;t fit in the cave anymore. After walking a little futher, she dwarfs the entire plot of terrain she started in. There&amp;#39;s a bit of an optical illusion with the size changing, where sometimes it seems like you&amp;#39;re really far from an area, when in actuality you&amp;#39;re just much larger than it.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://rawgit.com/apiotrow/Alice/master/Assets/Executables/Alice1.1/Alice1.1.html&quot;&gt;&lt;img src=&quot;/assets/2014-09-05/screens2tall.png&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;As you can see, there&amp;#39;s a floating planet type thing at the peak of the level. I took short digression in the middle of this project to try and implement spherical gravity, so you can run around a planet. I modeled a planet in Sculptris, and successfully got the player oriented properly on the planet&amp;#39;s surface, but soon realized that the stock 3rd person character controller in Unity is much more complicated than just having the player&amp;#39;s capsule collider slide along a surface. Making a spherical character controller would be quite an undertaking for me, so I decided to save it for another day. Ended up keeping the planet, though.&lt;/p&gt;
+
+&lt;p&gt;I always noticed that one of the benefits of coding alone is that you can keep your code clean. I decided to put this into practice early on. I actually used functions in this project. I feel like such an adult.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;cs&quot;&gt;
+using UnityEngine;
+using System.Collections;
+
+public class AliceController : MonoBehaviour
+{
+    public AlicePlanet alicePlanet;
+    public Transform makeSmallerObject;
+
+    public MouseOrbitImproved cam;
+    public ThirdPersonControllerCS playercont;
+    float lerpTime;
+
+    public float camDistChangeMultiplier;
+
+    float scaleChange;
+    float newScale;
+    float currentScale;
+    float scaleChangeSpeed;
+
+    float oldCamDistance;
+    float camDistanceChangeSpeed;
+
+    float minScale;
+    float maxScale;
+
+    float walkSpeedMultiplier;
+    float runSpeedMultiplier;
+    float jumpHeightMultiplier;
+    float inAirControlAccelerationMultiplier;
+    float gravityMultiplier;
+    float fogEndDistanceMultiplier;
+
+    bool manualSizeChanging;
+
+    void OnGUI(){
+        string text;
+        text = &quot;Manual Size Changing: &quot; + manualSizeChanging;
+        GUI.Box (new Rect (Screen.width - 200, 0, 200, 30), text);
+    }
+
+
+    void Start ()
+    {
+
+        cam = Camera.main.GetComponent&lt;MouseOrbitImproved&gt; ();
+        playercont = gameObject.GetComponent&lt;ThirdPersonControllerCS&gt; ();
+        lerpTime = 20f;
+
+        camDistChangeMultiplier = 5f;
+
+        maxScale = 2000f;
+        minScale = 1f;
+
+        scaleChange = 0f;
+        newScale = 1f;
+        currentScale = 1f;
+
+        walkSpeedMultiplier = 2f;
+        runSpeedMultiplier = 4f;
+        jumpHeightMultiplier = 4f;
+        inAirControlAccelerationMultiplier = 2f;
+        fogEndDistanceMultiplier = 10f;
+        gravityMultiplier = 20f;
+
+        newScale = currentScale;
+
+        transform.localScale = new Vector3 (minScale, minScale, minScale);
+        
+        cam.distance = minScale * camDistChangeMultiplier;
+        
+        playercont.walkSpeed = minScale * walkSpeedMultiplier;
+        playercont.runSpeed = minScale * runSpeedMultiplier;
+        playercont.jumpHeight = minScale * jumpHeightMultiplier;
+        playercont.inAirControlAcceleration = minScale * inAirControlAccelerationMultiplier;
+        playercont.gravity = minScale * gravityMultiplier;
+
+        RenderSettings.fog = false;
+        RenderSettings.fogEndDistance = minScale * fogEndDistanceMultiplier;
+
+        manualSizeChanging = false;
+    }
+
+
+
+    void Update ()
+    {
+        if (Input.GetKeyDown (KeyCode.R)) {
+            Application.LoadLevel (0); 
+        }
+
+        if(Input.GetKeyDown(KeyCode.T)){
+            manualSizeChanging = !manualSizeChanging;
+        }
+
+        handleSizeChange();
+
+        if (transform.localScale.x &gt;= maxScale) {
+            setValues(maxScale);
+        }
+        if (transform.localScale.x &lt;= minScale) {
+            setValues(minScale);
+        }
+    }
+
+    void setValues(float scale){
+        transform.localScale = new Vector3 (scale, scale, scale);
+
+        camDistanceChangeSpeed = Time.deltaTime * Mathf.Abs ((scale * camDistChangeMultiplier) - cam.distance);
+        cam.distance = Mathf.MoveTowards (cam.distance, scale * camDistChangeMultiplier, camDistanceChangeSpeed);
+
+        playercont.walkSpeed = scale * walkSpeedMultiplier;
+        playercont.runSpeed = scale * runSpeedMultiplier;
+        playercont.jumpHeight = scale * jumpHeightMultiplier;
+        playercont.inAirControlAcceleration = scale * inAirControlAccelerationMultiplier;
+        playercont.gravity = scale * gravityMultiplier;
+
+        RenderSettings.fogEndDistance = scale * fogEndDistanceMultiplier;
+    }
+
+    void sizeChangeByInput(){
+        if(Input.GetKeyDown(KeyCode.Alpha2)/* || Input.GetMouseButtonDown(1)*/){
+            if(newScale &gt; minScale)
+                newScale = newScale / 2f;
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha1) /*|| Input.GetMouseButtonDown(0)*/){
+            if(newScale &lt; maxScale)
+                newScale = newScale * 2f;
+        }
+
+        if (Input.GetAxis (&quot;Mouse ScrollWheel&quot;) != 0) {
+            scaleChange = -Input.GetAxis (&quot;Mouse ScrollWheel&quot;);
+
+            newScale = transform.localScale.x + (scaleChange * 5f);
+        }
+    }
+
+    void sizeChangeByDistanceToObject(Transform obj, float multiplier){
+        float distToObject;
+        distToObject = Vector3.Distance (obj.position, transform.position);
+        newScale = distToObject * multiplier;
+    }
+
+
+    void handleSizeChange(){
+        if (!manualSizeChanging) {
+            sizeChangeByDistanceToObject (makeSmallerObject, 0.1f);
+        } else {
+            sizeChangeByInput ();
+        }
+
+        scaleChangeSpeed = Time.deltaTime * Mathf.Abs (newScale - transform.localScale.x);
+        currentScale = Mathf.MoveTowards (transform.localScale.x, newScale, scaleChangeSpeed);                 
+        setValues(currentScale);
+    }
+    
+    void applySphericalGravity(){
+        transform.up = -(alicePlanet.transform.position - transform.position);
+        Debug.DrawRay (transform.position, transform.up, Color.green, 5f);
+        rigidbody.AddForce (-transform.up * 30f);
+        
+        if(Input.GetKey(KeyCode.W)){
+            rigidbody.AddForce(transform.forward * 10f);
+        }
+        if(Input.GetKey(KeyCode.Space)){
+            rigidbody.AddForce(transform.up * 50f);
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To enact the size change, I change the newScale variable, then change all the player&amp;#39;s other attributes according to that. Attributes like jump height, run speed, air acceleration, etc. Each one has it&amp;#39;s own multipler, since some of the attributes need to be throttled as Alice grows. If everything grew by the same proportion, we&amp;#39;d run into issues with her moving too fast as a giant and being difficult to control. I got a bit more experience with lerping. Well, not actual lerping. I gave up on Mathf.Lerp after an hour or so and switched to a more user-friendly Mathf function, much like I continually give up on quaternions in favor of euler angles. &lt;a href=&quot;http://docs.unity3d.com/ScriptReference/Mathf.MoveTowards.html&quot;&gt;Mathf.MoveTowards&lt;/a&gt; is my new best friend. Still, I definitely need to patch up this weak point I have with certain math concepts. I&amp;#39;ve successfully evaded inverse trig functions and anything involving complex numbers for most of my programming career, but I know I&amp;#39;ll have to face them one day.&lt;/p&gt;
+
+&lt;p&gt;One thing to come of this project is my having found a workaround for an annoying limitation with Unity&amp;#39;s built-in terrain system. You can&amp;#39;t make caves in Unity. Nothing can be overhanging. However, by creating prefabs in Sculptris and incorporating them into my terrain, I was able to make caves and other overhanging things. It was relatively painless creating the models and having them blend well with the terrain. They are pretty fucking ugly models, though, on account of my inability to create any kind of graphic art that a 2-year-old smashing a keyboard and slobbering on the screen couldn&amp;#39;t duplicate, but I&amp;#39;ve come to expect this of myself and am completely at peace with it.&lt;/p&gt;
+
+&lt;p&gt;Most of all, I dealt with shaders, textures, shadows, and lighting. Shadows can be a bit of a pain in Unity. I&amp;#39;m sure I only utilize about 5% of their potential. I spent a lot of time tweaking quality settings, directional light properties, and shadow attributes, in order to get even crappy shadows to work and not bug out. Getting the textures and colors I wanted with the terrain was just a lot of trial and error. I didn&amp;#39;t even bother to google it. Sometimes I prefer to just fuck around with things until they work. It&amp;#39;s partly arrogance, but also because I&amp;#39;ve noticed that my greatest discoveries from recklessly adjusting things. &lt;a href=&quot;http://docs.unity3d.com/ScriptReference/Light-cookie.html&quot;&gt;Light cookies&lt;/a&gt; are one thing I found purely through messing with stuff. They can be used for a lot of cheap tricks, like making it appear as thought dust is blowing across the ground, or by making terrain look textured when it&amp;#39;s completely smooth.&lt;/p&gt;
+
+&lt;p&gt;I also dabbled a bit in performance. My goal in life is to make programs that run smoothly. For me, performance comes before graphics, every time. I was pleasantly surpised by a particular feature of terrain I found, called &lt;a href=&quot;http://docs.unity3d.com/ScriptReference/Terrain-heightmapPixelError.html&quot;&gt;Pixel Error&lt;/a&gt;. One of my terrains was getting so detailed that it was dropping my framerate to annoyingly low levels. I found this stupid pixel error slider, slid it all the way to the right, saw my terrain become lower quality, then played the game and saw my framerates increase from 20-ish up to the 70-80 range. It does cause the terrain to dance a little bit as the polygons are continually popping into existence and committing suicide based on the camera&amp;#39;s distance from them, but it&amp;#39;s a small price to pay for a smooth game.&lt;/p&gt;
+
+&lt;p&gt;I did import a couple of large asset bundles in the earlier part of this project, when I was still figuring out what to put the player through. One was a nature pack. The demo scenes ran uncomfortably slow on my 2010 MacBook Pro, so I wrote that one off. I also tried a low-poly urban asset package. Plenty of buildings for her to knock over. Everything ran somewhat smoothly as well. I got excited when I saw one of their demo scenes:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2014-09-05/screen3.png&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Stupid me. Thought maybe they had spherical gravity implemented, and I could just steal it. Turns out no. It&amp;#39;s just a globe with buildings. But then I thought maybe they had some super secret way of wrapping things around the face of a sphere. Wrong again. They either hand-crafted those building to sit on the sphere like that, or they did some kind of wrapping in a 3D modeling program and imported them as a unit. Out of anger, hurt, and resentment, I started the planet thing I described above. And look how fucking well that turned out. Thanks a lot, Unity Asset Store. Guess I&amp;#39;ll just do everything my god damned self.&lt;/p&gt;
+
+&lt;p&gt;I did notice the bloom and lens flares, depth of field, and antialiasing on the main camera in that scene, though, which gives it that cool blur effect. I think I&amp;#39;m going to mess with that next. I&amp;#39;m getting kind of tired of Alice anyway. She was fun for a while, but we&amp;#39;ve been moving in different directions lately. Plus she has a bad habit of falling through the terrain when her capsule collider increases in size and clips through the mesh. It was cute the first few times, but it wore thin pretty fucking quickly.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>EVERYTHING GETS A CEL SHADER</title>
+   <link href="http://apiotrow.github.io/2014/08/29/Cel%20Shading%20Adventure/"/>
+   <updated>2014-08-29T00:00:00-07:00</updated>
+   <id>http://apiotrow.github.io/2014/08/29/Cel Shading Adventure</id>
+   <content type="html">&lt;p&gt;So I think I&amp;#39;m about to get obsessed with cel shading. I like the look of it. I started by googling &amp;quot;unity cel shader&amp;quot; and getting crap results. Then, after several hours, I found out Unity has a built-in cel shader. Fucking everything in the world.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#39;m also starting to see the merit of quick, messy prototypes composed largely of things other people have made. Here&amp;#39;s my current mess:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2014-08-29/alice.png&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Unity&amp;#39;s stock 3rd person controller, some random &amp;quot;Alice&amp;quot; prefab I found, and no attempt at making decent terrain. I just wanted to see how a 3D adventure game would look if I cel shaded the fuck out of everything. So far, I&amp;#39;m in favor.&lt;/p&gt;
+
+&lt;p&gt;In general, I&amp;#39;ve been focusing on character models. I&amp;#39;ve rarely focused on art. I&amp;#39;m thinking I should strengthen that weakness. I came across this character creation tool called UMA that seems like it&amp;#39;s going for realism:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2014-08-29/uma.png&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Definitely some uncanny valley stuff going on there. I have nothing but respect for the guy or girl that coded this, because I wouldn&amp;#39;t even know where to begin, but those are some awkward looking character models. I&amp;#39;ve decided to stray away from realism and move more towards cartoonish models. Cartoonish models are something that someone with my art creation skills (see: none) can deal with.&lt;/p&gt;
+
+&lt;p&gt;I did mess with voxels, for about 30 total minutes. I think I&amp;#39;ve lost my passion for them. I feel like there was a voxel feeding frenzy for a few years, and now we&amp;#39;re reaching a point of stability where everything interesting that could be done with them has been done. I doubt I&amp;#39;ll change the world if I start working with them. A friend of mine this Summer wrote on the whiteboard in our game lab &amp;quot;Because you&amp;#39;ll never pull a Notch.&amp;quot; I believe he was right.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;#39;s an infinite-world voxel generator I came across during one of my my Google adventures:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2014-08-29/voxel.png&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Beutiful, yes, but boring as a dog&amp;#39;s ass. Even a cel shader couldn&amp;#39;t make this interesting, and that&amp;#39;s saying something. Voxel projects also appear quite grueling in the code department. At least the good voxel projects.&lt;/p&gt;
+
+&lt;p&gt;The next step for me is probably more of this 3D cartoony cel shadey stuff. When I get burned out on that, I plan to go back to my gravity project. I think I found a way to turn it into an actual game.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Gravity 1.2</title>
+   <link href="http://apiotrow.github.io/2014/08/22/Gravity%201.2.md/"/>
+   <updated>2014-08-22T00:00:00-07:00</updated>
+   <id>http://apiotrow.github.io/2014/08/22/Gravity 1.2.md</id>
+   <content type="html">&lt;p&gt;Added a lot to my gravity project. Several GUI elements that allow you to tweak the parameters. Changed the trails to have black borders, so you can see which is behind the other. Also made the trails various neon colors. Unity doesn&amp;#39;t have any functions to create colors from HSV. They only have RGB. Sucks, because randomized RGB values tend to be dull tones. To get some bright colors, I used a couple of HSV functions I found in &lt;a href=&quot;http://pastebin.com/683Gk9xZ&quot;&gt;some random Pastebin&lt;/a&gt;. Poor documentation on those, however. I&amp;#39;m very dissappointed that a random Pastebin did&amp;#39;t properly document important usage issues like parameter ranges. I will not be shopping there again, I can tell you that. Unfortunately, I was able to recall approximately, roundabout, in the neighborhood of, more-or-less, nothing at all from a computer graphics course I took, which went over color representations. As a result, the color range I was able to produce is not that large. There&amp;#39;s a lot of repeat colors, or very similar looking colors.&lt;/p&gt;
+
+&lt;p&gt;I optimized a lot of the code. It&amp;#39;s still far from clean, though. Any GUI code I produce in Unity tends to be a complete mess. I tried for modularity this time, but it seemed like it would have taken longer than it was worth, so I told it to go fuck itself.&lt;/p&gt;
+
+&lt;p&gt;Besides a lot of copy-and-paste code I can use for later projects, out of this project I got some experience with a cool built-in feature in Unity called TrailRenderer. 3D objects can get pretty stale after a while. There&amp;#39;s no life to them. Trails, however, are always facing the camera, and have a more cell-shadey feel. They jump off the screen and grab your attention.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://rawgit.com/apiotrow/UnityExperiments/master/gravity1.2/gravity1.2.html&quot;&gt;&lt;img src=&quot;/assets/2014-08-22/4ofem.png&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I gave the user the option to either render every trail for every planet, or render just one at a time, and cycle through each one. I thought it&amp;#39;d be interesting to see individual trajectories. Turns out it&amp;#39;s pretty, but not that interesting. From the experiments I did with having multiple &amp;quot;suns,&amp;quot; which are my static planets that generate a lot of force, and from having an object flying around that is only affected by the gravity of each planet, and not the sun, I can tell that this project could be more interesting. Both of those additions made for weirder orbital paths. However, I think I&amp;#39;m going to move on from this project for now. I want to go back to playing with Voxels. I&amp;#39;m interested to see how smooth I can make voxel terrain be before the amount of rendering required causes significant slowdown. Blocky Minecraft like terrain is fun, but smooth is more realistic and would allow for more unique block breaking and placing.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Gravity and Balance</title>
+   <link href="http://apiotrow.github.io/2014/08/19/Gravity-and-Balance/"/>
+   <updated>2014-08-19T00:00:00-07:00</updated>
+   <id>http://apiotrow.github.io/2014/08/19/Gravity-and-Balance</id>
+   <content type="html">&lt;p&gt;Had this idea of a plate, and on the plate is a ball. The plate has to continually tilt in order to keep the ball from rolling off the edge. I wondered how effective I could make an AI-driven plate. Ended up with something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;cs&quot;&gt;
+platePos = transform.position;
+ballPos = ball.transform.position;
+
+float xdiff = platePos.x - ballPos.x;
+float zdiff = platePos.z - ballPos.z;
+dist = Vector3.Distance (ballPos, platePos);
+float xrot = transform.rotation.eulerAngles.x;
+float zrot = transform.rotation.eulerAngles.z;
+
+//if ball is left or right of center, tilt
+//toward center
+if (xdiff &lt; 0) {
+    transform.RotateAround (transform.position, 
+    Vector3.forward, 
+    Time.deltaTime * dist);
+} else {
+    transform.RotateAround (transform.position, 
+    Vector3.back, 
+    Time.deltaTime * dist);
+}
+
+//if ball is above or below center, tilt
+//toward center
+if (zdiff &lt; 0) {
+    transform.RotateAround (transform.position, 
+    Vector3.left, 
+    Time.deltaTime * dist);
+} else {
+    transform.RotateAround (transform.position, 
+    Vector3.right, 
+    Time.deltaTime * dist);
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This method is a bit stupid. I&amp;#39;m just testing the ball&amp;#39;s position relative to the center of the plate. If it&amp;#39;s off to one side, the plate tilts. How quickly it tilts depends on the ball&amp;#39;s distance from the center. As the ball nears the edge, the plate will begin tilting faster. The downside of this method is that the plate gets jittery at extreme tilts, most likely because I&amp;#39;m tilting on two axes at once, and they end up fighting with each other. I tried the pro method of determining the needed axis of tiltage by calculating a vector off of the ball. When I tried that, the vector worked, but the tilt didn&amp;#39;t. I blame quaternions, and my refusal to understand what a quaternion is.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://rawgit.com/apiotrow/UnityExperiments/master/balance/balance.html&quot;&gt;&lt;img src=&quot;/assets/2014-08-19/balancesc.png&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I also added to a project I didn&amp;#39;t think would go anywhere. It started out as an attempt to make a game where you leap from planet to planet, coming under the effect of their gravitational fields as you neared them. As I worked on it, I moved away from that and just ended up wanting to make an orbit simulation. I was interested in how some of the planetary systems I was making were tending toward equilibrium. So I decided to work on a solar system type thing, where each planet was subject to the gravitational pull of every other planet. I went balls out and decided to do minimal work with Unity&amp;#39;s interface, opting instead to generate as much as I could within the code. I ended up with some pretty sick loops. Check em:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;cs&quot;&gt;
+//array of planets
+public Planet[] planets;
+    
+void Start () { 
+
+planets = new Planet[numPlanets];
+
+//inital planet we make clones from
+planets[0] = 
+    GameObject.Find (&quot;Planet1&quot;).GetComponent (&quot;Planet&quot;) as Planet;
+
+//the sun
+planets[1] = 
+    GameObject.Find (&quot;Planet3&quot;).GetComponent (&quot;Planet&quot;) as Planet;
+planets [1].renderer.material.color = Color.yellow;
+
+float maxrange = 200f;
+
+for(int i = 2; i &lt; planets.Length; i++){
+    //spawn planet in a random location
+    Vector3 randLoc = 
+        new Vector3(Random.Range (-maxrange,maxrange), 
+            Random.Range (-maxrange,maxrange), 
+            Random.Range (-maxrange,maxrange));
+
+    //make a clone
+    Planet newplanet = 
+        Instantiate (planets[0], 
+            randLoc, 
+            transform.rotation) as Planet;
+        
+    //add it to the array
+    planets[i] = newplanet;
+
+    //give it a random mass
+    planets[i].rigidbody.mass = 
+        Random.Range (PlayerPrefs.GetFloat (&quot;massMin&quot;), 
+        PlayerPrefs.GetFloat (&quot;massMax&quot;));
+    massMax = PlayerPrefs.GetFloat (&quot;massMax&quot;);
+    massMin = PlayerPrefs.GetFloat (&quot;massMin&quot;);
+
+    //give it a random color
+    planets[i].renderer.material.color = 
+        new Color(Random.Range (0f,1f),
+            Random.Range (0f,1f),
+            Random.Range (0f,1f));
+
+    //give it a random size
+    float randScale = Random.Range (1f, 6f);
+    planets[i].transform.localScale += 
+        new Vector3(randScale,randScale,randScale);
+
+    //give it a random starting direction
+    float rand = Random.Range (0f,1f);
+    Vector3 dir;
+            
+    if(rand &gt; 0f &amp;&amp; rand &lt; 0.25f)
+        dir = Vector3.left;
+    else if(rand &gt; 0.25f &amp;&amp; rand &lt; 0.5f)
+        dir = Vector3.right;
+    else if(rand &gt; 0.5f &amp;&amp; rand &lt; 0.75f)
+        dir = Vector3.forward;
+    else if(rand &gt; 0.75f &amp;&amp; rand &lt; 1f)
+        dir = Vector3.back;
+    else
+        dir = Vector3.back;
+            
+    planets[i].rigidbody.AddForce (dir * 900);
+}
+}
+
+void FixedUpdate () {
+//make every planet influenced by the gravity of every other planet.
+//the strength of gravitational pull is proportional to its mass
+for(int i = 0; i &lt; planets.Length; i++){
+    for(int j = 0; j &lt; planets.Length; j++){
+        if (i != j)
+            planets[i].rigidbody.AddForce(
+            (planets[j].transform.position 
+            - planets[i].transform.position) 
+             / (planets[j].rigidbody.mass / 18));
+        }
+    }
+}
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Pretty beastly nested loop I have there. Don&amp;#39;t act like you&amp;#39;re not impressed. This is just a summary of the code. I left out all the butt-ugly GUI and PlayerPref junk. I didn&amp;#39;t realize passing data from one scene to another was so easy in Unity. For a long time I thought Application.LoadLevelAdditive was the only way to preserve anything. That&amp;#39;s a super ugly method, where you&amp;#39;re forced to iteratively delete every object you don&amp;#39;t want passed in to the level you&amp;#39;re loading. PlayerPrefs allowed me to keep user inputs across level reloads. Hence, a brand new GUI to streamline the solar system creation process.&lt;/p&gt;
+
+&lt;p&gt;This build is still buggy, but can generate some alright results if you mess with the settings enough. Not sure where I&amp;#39;m going to take this one. I may not find the orbital equlibrium I was seeking, but I think some cooler stuff might spawn from it.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://rawgit.com/apiotrow/UnityExperiments/master/gravity/gravity.html&quot;&gt;&lt;img src=&quot;/assets/2014-08-19/orbitsc.png&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>We Jekyll Now</title>
+   <link href="http://apiotrow.github.io/2014/08/14/we-jekyll-now/"/>
+   <updated>2014-08-14T00:00:00-07:00</updated>
+   <id>http://apiotrow.github.io/2014/08/14/we-jekyll-now</id>
+   <content type="html">&lt;p&gt;Just migrated this blog from Wordpress.com to my GitHub. Using this thing called Jekyll. It&amp;#39;s pretty hardcore. When I do things through the command line I feel like I&amp;#39;m hacking into The Matrix. It took a long journey of Googling to get it running. It went like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c#&quot; data-lang=&quot;c#&quot;&gt;&lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;InstallJekyll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;UpdateGem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;InstallJekyll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;MakeABlog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;UpdateGem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rubygems&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;update_rubygems&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IOException&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Fetching: eventmachine-1.0.3.gem (100%) ERROR:  While executing gem ... (Gem::FilePermissionError) You don&amp;#39;t have write permissions for the /Library/Ruby/Gems/2.0.0 directory.&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ToString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;InstallRbenv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;UpdateGem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;//infinite loops are best loops&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;InstallRbenv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;goto&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;https&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//github.com/sstephenson/rbenv;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clone&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;https&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//github.com/sstephenson/rbenv.git ~/.rbenv;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;$HOME/.rbenv/bin:$PATH&amp;quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;#39;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;~/.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bash_profile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;eval&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;$(rbenv init -)&amp;quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;#39;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;~/.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bash_profile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rbenv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;InstallJekyll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jekyll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;MakeABlog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;???;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;FuckItJustFindATemplate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;FuckItJustFindATemplate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;google&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;jekyll template&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;click&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Poole&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GitHub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;thisIsMyBlogIMadeWithNoHelp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;thisIsMyBlogIMadeWithNoHelp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clone&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;git@github&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;poole&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;poole&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;cp&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;poole&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;/.&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;poole&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;remote&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;origin&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;git@github&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;apiotrow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;apiotrow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;github&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;commit&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;First commit. Really proud of all this stuff I made completely on my own&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;origin&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;master&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;And now I have this blog. &lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://apiotrow.github.io/assets/2014-08-14/neodecodelogo.jpg&quot; alt=&quot;matrix&quot;&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>First Post</title>
+   <link href="http://apiotrow.github.io/2014/08/09/first-post/"/>
+   <updated>2014-08-09T00:00:00-07:00</updated>
+   <id>http://apiotrow.github.io/2014/08/09/first-post</id>
+   <content type="html">&lt;p&gt;Skyboxes are these cool things in Unity that allow you to create skies. Skyboxes look a lot the inner faces of a cube, but they&amp;#39;re different in that you can&amp;#39;t reach them in-game. Professionally done skyboxes are usually high-res, use a bit of warping, and are tiled perfectly so that you can&amp;#39;t see any seams. When you pan around in a 3D environment with a skybox, it does give the impression of a sky. If you don&amp;#39;t want to use someone else&amp;#39;s work, you can create your own skybox. All you need is Unity, an image, an image editor, and the ability to divide by 4. Here&amp;#39;s a short tutorial:&lt;/p&gt;
+
+&lt;p&gt;Step 1: Find your picture&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://apiotrow.github.io/assets/2014-08-09/1336023490071.png&quot; alt=&quot;My helpful screenshot&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Step 2: Crop it 4 times&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://apiotrow.github.io/assets/2014-08-09/backimage.png&quot; alt=&quot;My helpful screenshot&quot;&gt;&lt;img src=&quot;http://apiotrow.github.io/assets/2014-08-09/leftimage.png&quot; alt=&quot;M&quot;&gt;&lt;img src=&quot;http://apiotrow.github.io/assets/2014-08-09/downimage.png&quot; alt=&quot;My helpful screenshot&quot;&gt;&lt;img src=&quot;http://apiotrow.github.io/assets/2014-08-09/rightimage.png&quot; alt=&quot;My helpful screenshot&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Step 3: Put it in Unity&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://apiotrow.github.io/assets/2014-08-09/screeny.png&quot; alt=&quot;My helpful screenshot&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Step 4: Take a screenshot and attach it to a job application.&lt;/p&gt;
+</content>
+ </entry>
+ 
+
+</feed>

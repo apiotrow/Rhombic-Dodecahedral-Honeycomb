@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Gravity and Balance &middot; Aaron Piotrowski
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+    
+    <link rel="stylesheet" href="/highlight/styles/monokai_sublime.css">
+    <script src="/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p></p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">Contact</a>
+        
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+      <a class="sidebar-nav-item" href="https://github.com/apiotrow/">My GitHub</a>
+      
+      <a class="sidebar-nav-item" href="http://www.linkedin.com/pub/aaron-piotrowski/a7/142/a4a/">My LinkedIn</a>
+
+
+
+    <a class="sidebar-nav-item" href="https://github.com/poole/lanyon">Lanyon Jekyll Theme</a>
+    <span class="sidebar-nav-item">Currently v1.0.0</span>
+  </nav>
+
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2014. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">Aaron Piotrowski</a>
+            <small>Programming</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">Gravity and Balance</h1>
+  <span class="post-date">19 Aug 2014</span>
+  <p>Had this idea of a plate, and on the plate is a ball. The plate has to continually tilt in order to keep the ball from rolling off the edge. I wondered how effective I could make an AI-driven plate. Ended up with something like this:</p>
+
+<pre><code class="cs">
+platePos = transform.position;
+ballPos = ball.transform.position;
+
+float xdiff = platePos.x - ballPos.x;
+float zdiff = platePos.z - ballPos.z;
+dist = Vector3.Distance (ballPos, platePos);
+float xrot = transform.rotation.eulerAngles.x;
+float zrot = transform.rotation.eulerAngles.z;
+
+//if ball is left or right of center, tilt
+//toward center
+if (xdiff < 0) {
+    transform.RotateAround (transform.position, 
+    Vector3.forward, 
+    Time.deltaTime * dist);
+} else {
+    transform.RotateAround (transform.position, 
+    Vector3.back, 
+    Time.deltaTime * dist);
+}
+
+//if ball is above or below center, tilt
+//toward center
+if (zdiff < 0) {
+    transform.RotateAround (transform.position, 
+    Vector3.left, 
+    Time.deltaTime * dist);
+} else {
+    transform.RotateAround (transform.position, 
+    Vector3.right, 
+    Time.deltaTime * dist);
+}
+
+</code></pre>
+
+<p>This method is a bit stupid. I&#39;m just testing the ball&#39;s position relative to the center of the plate. If it&#39;s off to one side, the plate tilts. How quickly it tilts depends on the ball&#39;s distance from the center. As the ball nears the edge, the plate will begin tilting faster. The downside of this method is that the plate gets jittery at extreme tilts, most likely because I&#39;m tilting on two axes at once, and they end up fighting with each other. I tried the pro method of determining the needed axis of tiltage by calculating a vector off of the ball. When I tried that, the vector worked, but the tilt didn&#39;t. I blame quaternions, and my refusal to understand what a quaternion is.</p>
+
+<p><a href="https://rawgit.com/apiotrow/UnityExperiments/master/balance/balance.html"><img src="/assets/2014-08-19/balancesc.png"></a></p>
+
+<p>I also added to a project I didn&#39;t think would go anywhere. It started out as an attempt to make a game where you leap from planet to planet, coming under the effect of their gravitational fields as you neared them. As I worked on it, I moved away from that and just ended up wanting to make an orbit simulation. I was interested in how some of the planetary systems I was making were tending toward equilibrium. So I decided to work on a solar system type thing, where each planet was subject to the gravitational pull of every other planet. I went balls out and decided to do minimal work with Unity&#39;s interface, opting instead to generate as much as I could within the code. I ended up with some pretty sick loops. Check em:</p>
+
+<pre><code class="cs">
+//array of planets
+public Planet[] planets;
+    
+void Start () { 
+
+planets = new Planet[numPlanets];
+
+//inital planet we make clones from
+planets[0] = 
+    GameObject.Find ("Planet1").GetComponent ("Planet") as Planet;
+
+//the sun
+planets[1] = 
+    GameObject.Find ("Planet3").GetComponent ("Planet") as Planet;
+planets [1].renderer.material.color = Color.yellow;
+
+float maxrange = 200f;
+
+for(int i = 2; i < planets.Length; i++){
+    //spawn planet in a random location
+    Vector3 randLoc = 
+        new Vector3(Random.Range (-maxrange,maxrange), 
+            Random.Range (-maxrange,maxrange), 
+            Random.Range (-maxrange,maxrange));
+
+    //make a clone
+    Planet newplanet = 
+        Instantiate (planets[0], 
+            randLoc, 
+            transform.rotation) as Planet;
+        
+    //add it to the array
+    planets[i] = newplanet;
+
+    //give it a random mass
+    planets[i].rigidbody.mass = 
+        Random.Range (PlayerPrefs.GetFloat ("massMin"), 
+        PlayerPrefs.GetFloat ("massMax"));
+    massMax = PlayerPrefs.GetFloat ("massMax");
+    massMin = PlayerPrefs.GetFloat ("massMin");
+
+    //give it a random color
+    planets[i].renderer.material.color = 
+        new Color(Random.Range (0f,1f),
+            Random.Range (0f,1f),
+            Random.Range (0f,1f));
+
+    //give it a random size
+    float randScale = Random.Range (1f, 6f);
+    planets[i].transform.localScale += 
+        new Vector3(randScale,randScale,randScale);
+
+    //give it a random starting direction
+    float rand = Random.Range (0f,1f);
+    Vector3 dir;
+            
+    if(rand > 0f && rand < 0.25f)
+        dir = Vector3.left;
+    else if(rand > 0.25f && rand < 0.5f)
+        dir = Vector3.right;
+    else if(rand > 0.5f && rand < 0.75f)
+        dir = Vector3.forward;
+    else if(rand > 0.75f && rand < 1f)
+        dir = Vector3.back;
+    else
+        dir = Vector3.back;
+            
+    planets[i].rigidbody.AddForce (dir * 900);
+}
+}
+
+void FixedUpdate () {
+//make every planet influenced by the gravity of every other planet.
+//the strength of gravitational pull is proportional to its mass
+for(int i = 0; i < planets.Length; i++){
+    for(int j = 0; j < planets.Length; j++){
+        if (i != j)
+            planets[i].rigidbody.AddForce(
+            (planets[j].transform.position 
+            - planets[i].transform.position) 
+             / (planets[j].rigidbody.mass / 18));
+        }
+    }
+}
+}
+
+</code></pre>
+
+<p>Pretty beastly nested loop I have there. Don&#39;t act like you&#39;re not impressed. This is just a summary of the code. I left out all the butt-ugly GUI and PlayerPref junk. I didn&#39;t realize passing data from one scene to another was so easy in Unity. For a long time I thought Application.LoadLevelAdditive was the only way to preserve anything. That&#39;s a super ugly method, where you&#39;re forced to iteratively delete every object you don&#39;t want passed in to the level you&#39;re loading. PlayerPrefs allowed me to keep user inputs across level reloads. Hence, a brand new GUI to streamline the solar system creation process.</p>
+
+<p>This build is still buggy, but can generate some alright results if you mess with the settings enough. Not sure where I&#39;m going to take this one. I may not find the orbital equlibrium I was seeking, but I think some cooler stuff might spawn from it.</p>
+
+<p><a href="https://rawgit.com/apiotrow/UnityExperiments/master/gravity/gravity.html"><img src="/assets/2014-08-19/orbitsc.png"></a></p>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2014/11/09/Got-That-Greenlight/">
+            I got greenlit?
+            <small>09 Nov 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2014/10/21/Game-Pitch-%231/">
+            Game Pitch
+            <small>21 Oct 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2014/10/04/Floppy%20Man/">
+            Floppy Man
+            <small>04 Oct 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>
