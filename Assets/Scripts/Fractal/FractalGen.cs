@@ -7,7 +7,7 @@ using System.Collections.Generic;
  */
 public class FractalGen : MonoBehaviour {
 	int maxChunkSize = 100; //smaller chunks lead to higher framerates
-	bool permanent = false; //do old chunks stay put or get destroyed?
+	bool permanent = true; //do old chunks stay put or get destroyed?
 	int maxChunks = 100; //if so, max length of strip
 	bool addingCollider = false; //do we want to be able to walk on it?
 	string constructionBit = "marker"; //prefab fractal is composed of
@@ -21,15 +21,27 @@ public class FractalGen : MonoBehaviour {
 	Queue<GameObject> beenRenderedChunkQueue = new Queue<GameObject>();
 	Vector3 camGoTo;
 	GameObject[] chunkPool;
-	int poolIter = 0;
+	GameObject[] tilePool;
+	int chunkPoolIter = 0;
+	int tilePoolIter = 0;
 
 	void Start() {
 		if(usingResourcePool){
 			chunkPool = new GameObject[maxChunks];
 			for(int i = 0; i < chunkPool.Length; i++){
-				chunkPool[i] = new GameObject();
+				GameObject newChunk = GameObject.Instantiate(Resources.Load("Prefabs/Fractal/Chunk")) as GameObject;
+				chunkPool[i] = newChunk;
 				chunkPool[i].name = "chunk" + i;
 				chunkPool[i].transform.SetParent(GameObject.Find("Chunks").transform);
+			}
+
+			tilePool = new GameObject[maxChunkSize];
+			for(int i = 0; i < tilePool.Length; i++){
+				GameObject newTile = GameObject.Instantiate(Resources.Load("Prefabs/Fractal/" + constructionBit), 
+				                                            new Vector3(0f, 0f, 0f), 
+				                                            Quaternion.Euler(new Vector3(90f, 0f, 0f))) as GameObject;
+				tilePool[i] = newTile;
+				tilePool[i].SetActive(false);
 			}
 		}
 
@@ -141,7 +153,25 @@ public class FractalGen : MonoBehaviour {
 			divideTilePositionsIntoChunks(createTilePositions(LString));
 
 		for(int i = 0; i < allNextChunkVecs.Count; i++){
+			if(usingResourcePool){
+				if(tilePoolIter >= tilePool.Length - 1){
+					tilePoolIter = 0;
+				}else{
+					tilePoolIter++;
+				}
+			}
+
+
+
 			combineTileMeshes(createTiles(allNextChunkVecs[i]));
+//			print(chunkPoolIter + ", " + chunkPool.Length);
+			if(usingResourcePool){
+				if(chunkPoolIter >= chunkPool.Length - 1){
+					chunkPoolIter = 0;
+				}else{
+					chunkPoolIter++;
+				}
+			}
 		}
 	}
 
@@ -204,6 +234,7 @@ public class FractalGen : MonoBehaviour {
 			q++;
 			
 			if(q == maxChunkSize){
+				print("exgg");
 				allNextChunksVecs.Add(nextChunkVecs);
 				nextChunkVecs.Clear();
 				q = 0;
@@ -212,6 +243,14 @@ public class FractalGen : MonoBehaviour {
 			}
 		}
 		return allNextChunksVecs;
+
+
+
+//		List<Vector3> nextChunkVecs = new List<Vector3>();
+//		for(int i = 0; i < finals.Count; i++){
+//			nextChunkVecs.Add(finals[i]);
+//		}
+//		return nextChunkVecs;
 	}
 
 	/*
@@ -219,26 +258,40 @@ public class FractalGen : MonoBehaviour {
 	 * smaller meshes
 	 */
 	GameObject createTiles(List<Vector3> chunkVecs){
+//		print(tilePoolIter);
 		if(usingResourcePool){
-
+			foreach(Vector3 vec in chunkVecs){
+				tilePool[tilePoolIter].transform.position = vec;
+				tilePool[tilePoolIter].transform.SetParent(chunkPool[chunkPoolIter].gameObject.transform);
+				tilePool[tilePoolIter].SetActive(true);
+				if(tilePoolIter >= tilePool.Length - 1){
+					tilePoolIter = 0;
+				}else{
+					tilePoolIter++;
+				}
+			}
+			return chunkPool[chunkPoolIter];
 		}else{
 			GameObject newChunk = GameObject.Instantiate(Resources.Load("Prefabs/Fractal/Chunk")) as GameObject;
 			newChunk.transform.SetParent(GameObject.Find("Chunks").transform);
+
+			foreach(Vector3 vec in chunkVecs){
+				GameObject g =
+					GameObject.Instantiate(Resources.Load("Prefabs/Fractal/" + constructionBit), 
+					                       vec, 
+					                       Quaternion.Euler(new Vector3(90f, 0f, 0f))) as GameObject;
+				g.transform.SetParent(newChunk.gameObject.transform);
+			}
+			return newChunk;
 		}
-		foreach(Vector3 vec in chunkVecs){
-			GameObject g =
-				GameObject.Instantiate(Resources.Load("Prefabs/Fractal/" + constructionBit), 
-				                       vec, 
-				                       Quaternion.Euler(new Vector3(90f, 0f, 0f))) as GameObject;
-			g.transform.SetParent(newChunk.gameObject.transform);
-		}
-		return newChunk;
 	}
 
 	/*
 	 * Combines meshes of the children of passed in GameObject
 	 */
 	void combineTileMeshes(GameObject newChunk){
+		newChunk.transform.GetComponent<MeshFilter>().mesh.Clear();
+
 		MeshFilter[] meshFilters = newChunk.transform.GetComponentsInChildren<MeshFilter>();
 		CombineInstance[] combine = new CombineInstance[meshFilters.Length];
 
@@ -259,13 +312,15 @@ public class FractalGen : MonoBehaviour {
 			meshc.sharedMesh = newChunk.transform.GetComponent<MeshFilter>().mesh;
 		}
 
-		//delete the children of the chunk, as they aren't needed anymore
-		int chunkChildCount = newChunk.transform.childCount;
-		for(int h = 0; h < chunkChildCount; h++) {
-			Destroy(newChunk.transform.GetChild(h).gameObject);
+		if(!usingResourcePool){
+			//delete the children of the chunk, as they aren't needed anymore
+			int chunkChildCount = newChunk.transform.childCount;
+			for(int h = 0; h < chunkChildCount; h++) {
+				Destroy(newChunk.transform.GetChild(h).gameObject);
+			}
+			if(!permanent)
+				beenRenderedChunkQueue.Enqueue(newChunk);
 		}
-		if(!permanent)
-			beenRenderedChunkQueue.Enqueue(newChunk);
 	}
 	#endregion Chunk
 
